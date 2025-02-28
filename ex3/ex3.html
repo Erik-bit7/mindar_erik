@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>On és el Wally?</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .map-container {
+            position: relative;
+            display: inline-block;
+        }
+        .overlay {
+            position: absolute;
+            display: none;
+        }
+        @keyframes dance {
+            0% { transform: rotate(-10deg); }
+            100% { transform: rotate(10deg); }
+        }
+        .elephant {
+            width: 100px;
+            animation: dance 1s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+    <h1>On és el Wally?</h1>
+    <div class="map-container">
+        <img src="whereiswally4BN.png" alt="Mapa" id="map" width="800">
+        <img src="wally.png" class="overlay" id="wally" style="left: 500px; top: 300px; width: 50px;">
+        <img src="elephant.png" class="overlay elephant" id="elephant" style="left: 300px; top: 400px;">
+    </div>
+
+    <a-scene mindar-face embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-camera active="false" position="0 0 0"></a-camera>
+        <a-entity mindar-face-target="anchorIndex: 1">
+            <a-sphere color="green" radius="0.1"></a-sphere>
+        </a-entity>
+    </a-scene>
+
+    <script>
+        document.getElementById("map").addEventListener("click", function(event) {
+            let x = event.offsetX, y = event.offsetY;
+            if (x > 200 && x < 300 && y > 350 && y < 450) {
+                document.getElementById("elephant").style.display = "block";
+            }
+            if (x > 480 && x < 520 && y > 280 && y < 320) {
+                document.getElementById("wally").style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>
