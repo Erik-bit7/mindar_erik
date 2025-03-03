@@ -27,6 +27,12 @@
             width: 100px;
             animation: dance 1s infinite alternate;
         }
+        .qr-code {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 100px;
+        }
     </style>
 </head>
 <body>
@@ -36,7 +42,8 @@
         <img src="wally.png" class="overlay" id="wally" style="left: 500px; top: 300px; width: 50px;">
         <img src="elephant.gif" class="overlay elephant" id="elephant" style="left: 300px; top: 400px;">
     </div>
-
+    <img src="codQR.png" alt="QR Code" class="qr-code">
+    
     <a-scene mindar-face embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
         <a-camera active="false" position="0 0 0"></a-camera>
         <a-entity mindar-face-target="anchorIndex: 1">
