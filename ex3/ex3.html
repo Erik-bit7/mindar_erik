@@ -14,14 +14,14 @@
     <style>
         body { margin: 0; overflow: hidden; }
         
-        /* Estilos para que la cámara AR ocupe toda la pantalla */
+        /* Para que la cámara AR ocupe toda la pantalla */
         #ar-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1;
+            z-index: 0;
         }
 
         /* Código QR en la esquina superior izquierda */
@@ -36,10 +36,11 @@
     </style>
 </head>
 <body>
-    <!-- Código QR para acceder a la web -->
+
+    <!-- Código QR (visible en la web, no en AR) -->
     <img id="qr-code" src="codQR.png" alt="Código QR">
 
-    <!-- Contenedor para la Realidad Aumentada -->
+    <!-- Contenedor de la Realidad Aumentada -->
     <div id="ar-container">
         <a-scene 
             mindar-image="imageTargetSrc: targets.mind"
@@ -49,35 +50,27 @@
             vr-mode-ui="enabled: false"
             device-orientation-permission-ui="enabled: false">
 
-            <!-- Cámara MindAR -->
+            <!-- Cámara -->
             <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-            <!-- Mapa SIEMPRE visible -->
-            <a-image 
-                src="whereiswally4BN.png" 
-                position="0 0 -3" 
-                width="6" 
-                height="6">
-            </a-image>
+            <!-- MARCADORES DE MINDAR -->
 
-            <!--  MARCADORES DE MINDAR -->
-
-            <!--  Primer marcador: Castillo con elefante animado -->
+            <!-- 🔹 Primer marcador: Castillo con elefante animado -->
             <a-entity mindar-image-target="targetIndex: 0">
                 <a-gltf-model 
                     src="models/elephant.glb"
                     position="0 0 0"
-                    scale="0.2 0.2 0.2"
+                    scale="0.5 0.5 0.5"
                     animation="property: rotation; to: 0 360 0; loop: true; dur: 3000">
                 </a-gltf-model>
             </a-entity>
 
-            <!--  Segundo marcador: Wally escondido -->
+            <!-- 🔹 Segundo marcador: Wally escondido -->
             <a-entity mindar-image-target="targetIndex: 1">
                 <a-image 
                     src="wally.png" 
                     position="0 0 0" 
-                    scale="0.5 0.5 0.5">
+                    scale="1 1 1">
                 </a-image>
             </a-entity>
 
