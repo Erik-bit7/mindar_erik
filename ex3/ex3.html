@@ -13,6 +13,18 @@
 
     <style>
         body { margin: 0; overflow: hidden; }
+        
+        /* Estilos para que la cámara AR ocupe toda la pantalla */
+        #ar-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        /* Código QR en la esquina superior izquierda */
         #qr-code {
             position: absolute;
             top: 10px;
@@ -24,49 +36,53 @@
     </style>
 </head>
 <body>
-    <!-- Código QR en la esquina superior izquierda -->
+    <!-- Código QR para acceder a la web -->
     <img id="qr-code" src="codQR.png" alt="Código QR">
 
-    <!-- Escena de realidad aumentada -->
-    <a-scene 
-        mindar-image 
-        embedded 
-        color-space="sRGB" 
-        renderer="antialias: true"
-        vr-mode-ui="enabled: false"
-        device-orientation-permission-ui="enabled: false"
-        auto-enter-ar>
-        
-        <!-- Cámara AR -->
-        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+    <!-- Contenedor para la Realidad Aumentada -->
+    <div id="ar-container">
+        <a-scene 
+            mindar-image="imageTargetSrc: targets.mind"
+            embedded 
+            color-space="sRGB"
+            renderer="antialias: true; alpha: true"
+            vr-mode-ui="enabled: false"
+            device-orientation-permission-ui="enabled: false">
 
-        <!-- 📌 Mapa SIEMPRE visible (fuera de los targets) -->
-        <a-image 
-            src="whereiswally4BN.png" 
-            position="0 0 -3" 
-            width="10" 
-            height="10">
-        </a-image>
+            <!-- Cámara MindAR -->
+            <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <!-- Primer marcador: Elefante en el castillo -->
-        <a-entity mindar-image-target="targetIndex: 0">
-            <a-gltf-model 
-                src="models/elephant.glb"
-                position="0 0 0"
-                scale="0.2 0.2 0.2"
-                animation="property: rotation; to: 0 360 0; loop: true; dur: 3000">
-            </a-gltf-model>
-        </a-entity>
-
-        <!-- Segundo marcador: Wally en una casa -->
-        <a-entity mindar-image-target="targetIndex: 1">
+            <!-- Mapa SIEMPRE visible -->
             <a-image 
-                src="wally.png" 
-                position="0 0 0" 
-                scale="0.5 0.5 0.5">
+                src="whereiswally4BN.png" 
+                position="0 0 -3" 
+                width="10" 
+                height="10">
             </a-image>
-        </a-entity>
 
-    </a-scene>
+            <!--  MARCADORES DE MINDAR -->
+
+            <!--  Primer marcador: Castillo con elefante animado -->
+            <a-entity mindar-image-target="targetIndex: 0">
+                <a-gltf-model 
+                    src="models/elephant.glb"
+                    position="0 0 0"
+                    scale="0.2 0.2 0.2"
+                    animation="property: rotation; to: 0 360 0; loop: true; dur: 3000">
+                </a-gltf-model>
+            </a-entity>
+
+            <!--  Segundo marcador: Wally escondido -->
+            <a-entity mindar-image-target="targetIndex: 1">
+                <a-image 
+                    src="wally.png" 
+                    position="0 0 0" 
+                    scale="0.5 0.5 0.5">
+                </a-image>
+            </a-entity>
+
+        </a-scene>
+    </div>
+
 </body>
 </html>
