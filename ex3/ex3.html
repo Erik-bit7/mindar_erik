@@ -4,70 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Dónde está Wally?</title>
-     <!-- Importar A-Frame -->
-     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    
+    <!-- Importar A-Frame -->
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
 
-     <!-- Importar MindAR -->
-     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.0/dist/mindar-image-aframe.prod.js"></script>
- 
-     <!-- Importar A-Frame Extras -->
-     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.1.0/dist/aframe-extras.min.js"></script>
+    <!-- Importar MindAR -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.0/dist/mindar-image-aframe.prod.js"></script>
 
-     <style>
+    <style>
         body { margin: 0; overflow: hidden; }
-        #ar-container { width: 100%; height: 100vh; position: relative; }
-         #qr-code {
+        #qr-code {
             position: absolute;
-            top: 10px;  /* Asegura que el QR esté en la parte superior */
-            left: 10px;  /* Asegura que el QR esté en la esquina izquierda */
-            width: 100px;  /* Ajusta el tamaño del código QR */
+            top: 10px;
+            left: 10px;
+            width: 100px;
             height: 100px;
+            z-index: 10;
         }
-     </style>
+    </style>
 </head>
 <body>
-    <div id="ar-container">
-        <img id="qr-code" src="codQR.png" alt="Código QR">
-        <!-- MindAR setup -->
-        <mindar-image 
-            id="mindar" 
-            embedded 
-            color="black" 
-            target-image="targets.mind">
-            
-            <!-- Fondo del mapa (plano 3D con textura) -->
-            <a-plane src="whereiswally4BN.png" width="10" height="10" position="0 0 -3"></a-plane>
+    <!-- Código QR en la esquina superior izquierda -->
+    <img id="qr-code" src="codQR.png" alt="Código QR">
 
-            <!-- Primer marcador: Castillo -->
-            <mindar-target targetIndex="0">
-                <a-entity 
-                    gltf-model="modelos/elephant.gif"
-                    position="2 0 -2"
-                    scale="0.2 0.2 0.2"
-                    animation="property: rotation; to: 0 360 0; loop: true; dur: 3000">
-                </a-entity>
-            </mindar-target>
+    <!-- Escena de realidad aumentada -->
+    <a-scene mindar-image embedded color-space="sRGB" renderer="antialias: true">
+        
+        <!-- Cámara para MindAR -->
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-            <!-- Segundo marcador: Torre -->
-            <mindar-target targetIndex="1">
-                <a-image 
-                    src="wally.png" 
-                    position="-3 0 -2" 
-                    scale="0.5 0.5 0.5">
-                </a-image>
-            </mindar-target>
+        <!-- Imagen del mapa -->
+        <a-image src="whereiswally4BN.png" position="0 0 -2" width="5" height="5"></a-image>
 
-         </mindar-image>
-    </div>
+        <!-- Primer marcador: Castillo -->
+        <a-entity mindar-image-target="targetIndex: 0">
+            <a-gltf-model 
+                src="modelos/elephant.glb"
+                position="0 0 0"
+                scale="0.2 0.2 0.2"
+                animation="property: rotation; to: 0 360 0; loop: true; dur: 3000">
+            </a-gltf-model>
+        </a-entity>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const mindarThree = new MindAR.Three.Controller({ 
-                container: document.getElementById("ar-container"), 
-                imageTargetSrc: "targets.mind"
-            });
-            mindarThree.start();
-        });
-    </script>
+        <!-- Segundo marcador: Torre con Wally -->
+        <a-entity mindar-image-target="targetIndex: 1">
+            <a-image 
+                src="wally.png" 
+                position="0 0 0" 
+                scale="0.5 0.5 0.5">
+            </a-image>
+        </a-entity>
+
+    </a-scene>
 </body>
 </html>
