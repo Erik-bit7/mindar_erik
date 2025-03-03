@@ -3,39 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>On és Wally?</title>
+    <title>¿Dónde está Wally?</title>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.0/dist/mindar-image-three.prod.js"></script>
     <style>
         body { margin: 0; overflow: hidden; }
-        #ar-container { height: 100vh; }
+        #ar-container { width: 100%; height: 100vh; }
     </style>
 </head>
 <body>
     <div id="ar-container">
+        <!-- MindAR setup -->
         <mindar-image 
             id="mindar" 
             embedded 
             color="black" 
             target-image="targets.mind">
             
-            <!-- Primer marcador: Elefant ballant (model 3D) -->
-            <mindar-target targetIndex="0">
-                <a-entity 
-                    gltf-model="models/elephant.glb" 
-                    position="0 0 0"
-                    scale="0.2 0.2 0.2"
-                    animation="property: rotation; to: 0 360 0; loop: true; dur: 3000">
-                </a-entity>
-            </mindar-target>
+            <!-- Fondo del mapa -->
+            <a-scene>
+                <!-- Mapa como textura en un plano 3D -->
+                <a-plane src="whereiswally4BN.png" width="10" height="10" position="0 0 -3">
+                </a-plane>
 
-            <!-- Segon marcador: Wally (model 3D) -->
-            <mindar-target targetIndex="1">
-                <a-image 
-                    gltf-model="models/wally.png" 
-                    position="0 0 0"
-                    scale="0.2 0.2 0.2">
-                </a-image>
-            </mindar-target>
+                <!-- Primer marcador: Castillo -->
+                <mindar-target targetIndex="0">
+                    <a-entity 
+                        gltf-model="models/elephant.gif"
+                        position="2 0 -2"
+                        scale="0.2 0.2 0.2"
+                        animation="property: rotation; to: 0 360 0; loop: true; dur: 3000">
+                    </a-entity>
+                </mindar-target>
+
+                <!-- Segundo marcador: Torre -->
+                <mindar-target targetIndex="1">
+                    <a-image 
+                        src="wally-image.png" 
+                        position="-3 0 -2" 
+                        scale="0.5 0.5 0.5">
+                    </a-image>
+                </mindar-target>
+
+            </a-scene>
 
         </mindar-image>
     </div>
