@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercici 4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
+  </head>
+  <body>
+    <a-scene mindar-face embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets>
+        <a-asset-item id="hatModel" src="top_hat/scene.gltf"></a-asset-item>
+        <img id="hatTexture1" src="top_hat/textures/texture1.png">
+        <img id="hatTexture2" src="top_hat/textures/texture2.png">
+        
+        <a-asset-item id="glassesModel" src="top_hat/raybans.gltf"></a-asset-item>
+        <a-asset-item id="mustacheModel" src="top_hat/mariobigote.gltf"></a-asset-item>
+      </a-assets>
+
+      <a-camera active="false" position="0 0 0"></a-camera>
+
+      <!-- Sombrero con Texturas -->
+      <a-entity mindar-face-target="anchorIndex: 10">
+        <a-gltf-model id="hat" rotation="0 0 0" position="0 0.1 -0.5" scale="0.0028 0.0028 0.0028" src="#hatModel"></a-gltf-model>
+      </a-entity>
+
+      <!-- Gafas -->
+      <a-entity mindar-face-target="anchorIndex: 168">
+        <a-gltf-model rotation="0 0 0" position="0 0 -0.3" scale="0.004 0.004 0.004" src="#glassesModel"></a-gltf-model>
+      </a-entity>
+
+      <!-- Bigote -->
+      <a-entity mindar-face-target="anchorIndex: 6">
+        <a-gltf-model rotation="0 0 0" position="0 -0.05 -0.3" scale="0.0025 0.0025 0.0025" src="#mustacheModel"></a-gltf-model>
+      </a-entity>
+
+      <script>
+        AFRAME.registerComponent('apply-texture', {
+          init: function () {
+            let hat = document.querySelector('#hat');
+            hat.addEventListener('model-loaded', () => {
+              let mesh = hat.getObject3D('mesh');
+              if (mesh) {
+                mesh.traverse((node) => {
+                  if (node.isMesh) {
+                    node.material.map = new THREE.TextureLoader().load('top_hat/texture1.png');
+                    node.material.needsUpdate = true;
+                  }
+                });
+              }
+            });
+          }
+        });
+
+        document.querySelector("#hat").setAttribute("apply-texture", "");
+      </script>
+
+    </a-scene>
+  </body>
+</html>
+
+    
+  
