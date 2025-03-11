@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
 
     <style>
-      /* Asegurar que ocupa toda la pantalla */
+      /* Asegura que la escena ocupe toda la pantalla */
       html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
       a-scene { width: 100%; height: 100%; }
     </style>
@@ -26,36 +26,23 @@
       device-orientation-permission-ui="enabled: false"
       mindar-face-auto-start="true">
       
-      <!-- Modelos y texturas cargados -->
+      <!-- Cargar modelo del sombrero -->
       <a-assets>
         <a-asset-item id="hatModel" src="top_hat/mariogorra.gltf"></a-asset-item>
-        <a-asset-item id="glassesModel" src="top_hat/raybans.gltf"></a-asset-item>
-        <a-asset-item id="mustacheModel" src="top_hat/mariobigote.gltf"></a-asset-item>
         <img id="hatTexture" src="top_hat/textures/texture1.png">
+        <img id="hatTexture2" src="top_hat/textures/texture2.png">
       </a-assets>
 
       <!-- Cámara especializada para AR -->
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-      <!-- Sombrero (Prueba anchorIndex: 1 si no se alinea bien) -->
+      <!-- Sombrero (ajustado para mejor alineación) -->
       <a-entity mindar-face-target="anchorIndex: 10">
-        <a-gltf-model id="hat" rotation="0 0 0" position="0 0.15 -0.3" 
+        <a-gltf-model id="hat" rotation="0 0 0" position="0 0.2 -0.3" 
                       scale="0.003 0.003 0.003" src="#hatModel" apply-texture></a-gltf-model>
       </a-entity>
 
-      <!-- Gafas (Prueba anchorIndex: 151 si no se ajusta bien) -->
-      <a-entity mindar-face-target="anchorIndex: 168">
-        <a-gltf-model rotation="0 0 0" position="0 0 -0.2" 
-                      scale="0.004 0.004 0.004" src="#glassesModel"></a-gltf-model>
-      </a-entity>
-
-      <!-- Bigote (Prueba anchorIndex: 13 si no se ajusta bien) -->
-      <a-entity mindar-face-target="anchorIndex: 6">
-        <a-gltf-model rotation="0 0 0" position="0 -0.1 -0.3" 
-                      scale="0.0025 0.0025 0.0025" src="#mustacheModel"></a-gltf-model>
-      </a-entity>
-
-      <!-- Script para aplicar textura al sombrero -->
+  <!-- Script para aplicar textura al sombrero -->
       <script>
         AFRAME.registerComponent('apply-texture', {
           init: function () {
