@@ -3,17 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Exercici 4</title>
+    <title>Sombrero AR</title>
 
     <!-- A-Frame y MindAR -->
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
-
-    <style>
-      /* Asegura que la escena ocupe toda la pantalla */
-      html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
-      a-scene { width: 100%; height: 100%; }
-    </style>
   </head>
   
   <body>
@@ -23,49 +17,26 @@
       color-space="sRGB" 
       renderer="colorManagement: true, physicallyCorrectLights"
       vr-mode-ui="enabled: false"
-      device-orientation-permission-ui="enabled: false"
-      mindar-face-auto-start="true">
+      device-orientation-permission-ui="enabled: false">
       
       <!-- Cargar modelo del sombrero -->
       <a-assets>
-        <a-asset-item id="hatModel" src="top_hat/mariogorra.gltf"></a-asset-item>
-        <img id="hatTexture" src="top_hat/textures/texture1.png">
-        <img id="hatTexture2" src="top_hat/textures/texture2.png">
+        <a-asset-item id="hatModel" src="top_hat/scene.gltf"></a-asset-item>
       </a-assets>
 
       <!-- Cámara especializada para AR -->
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <a-camera active="false" position="0 0 0"></a-camera>
 
       <!-- Sombrero (ajustado para mejor alineación) -->
       <a-entity mindar-face-target="anchorIndex: 10">
-        <a-gltf-model id="hat" rotation="0 0 0" position="0 0.2 -0.3" 
-                      scale="0.003 0.003 0.003" src="#hatModel" apply-texture></a-gltf-model>
+        <a-gltf-model rotation="0 0 0" position="0 0.15 -0.3" 
+                      scale="0.003 0.003 0.003" src="#hatModel" visible="true"></a-gltf-model>
       </a-entity>
-
-  <!-- Script para aplicar textura al sombrero -->
-      <script>
-        AFRAME.registerComponent('apply-texture', {
-          init: function () {
-            let hat = this.el;
-            hat.addEventListener('model-loaded', () => {
-              let mesh = hat.getObject3D('mesh');
-              if (mesh) {
-                let texture = new THREE.TextureLoader().load(document.querySelector("#hatTexture").src);
-                mesh.traverse((node) => {
-                  if (node.isMesh) {
-                    node.material.map = texture;
-                    node.material.needsUpdate = true;
-                  }
-                });
-              }
-            });
-          }
-        });
-      </script>
       
     </a-scene>
   </body>
 </html>
+
 
 
     
