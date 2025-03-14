@@ -18,7 +18,9 @@
         animation="property: position; to: -1 4 -30; dur: 5000; dir: alternate; loop: true">
         </a-plane>
         <a-box position="-4 3 0" rotation="0 0 0" src="#cara" depth="1" height="1" width="1"
-            animation="property: rotation; to: 360 360 360; dur: 4000; easing: linear; loop: true">
+            animation__x="property: rotation; to: 360 0 0; dur: 4000; easing: linear; loop: true"
+            animation__y="property: rotation; to: 0 360 0; dur: 4000; easing: linear; loop: true"
+            animation__z="property: rotation; to: 0 0 360; dur: 4000; easing: linear; loop: true">
         </a-box>
         <a-sky src="#fons"></a-sky>
         <a-plane position="0 0 0" rotation="-90 0 0" width="100" height="100" src="#texturaterra"></a-plane>
