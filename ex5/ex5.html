@@ -42,13 +42,15 @@
         animation__rotation="property: rotation; to: 0 360 0; loop: true; dur: 8000; easing: linear">
       </a-sphere>
       
-      <a-dodecahedron id="esmou" position="8 2 -6" rotation="0 30 0" radius="3" src="#bicicletes"></a-dodecahedron>
+      <a-dodecahedron id="esmou" position="8 2 -6" rotation="0 30 0" radius="3" src="#bicicletes"
+      animation="property: position; from: 8 2 -6; to: 8 8 -6; dur: 2000; dir: alternate; loop: true;">
+      </a-dodecahedron>
     </a-scene>
     <script>
       let unobjecte = document.querySelector("#esmou");
 
       unobjecte.addEventListener("click", () => {
-        unobjecte.removeAttribute("animation"); // Detener animación al hacer clic
+        unobjecte.removeAttribute("animation"); 
       });
     </script>
 
