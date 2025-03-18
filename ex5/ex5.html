@@ -2,40 +2,46 @@
 <html>
   <head>
     <title>Exercisi 5 Cubisme Sonic</title>
-  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   </head>
   <body>
-  <a-scene>
-        <a-assets>
-          <img id="fons" src="exercici5 assets/Green Hill.jpeg" />
-          <img id="texturaterra" src="exercici5 assets/textura.jpeg" />
-          <img id="guernica" src="exercici5 assets/Sonic títol.jpeg" />        
-          <img id="cara" src="exercici5 assets/cubo.jpeg" />            
-          <img id="bicicletes" src="exercici5 assets/abstracto.png" />
-          <img id="wisp" src="exercici5 assets/cuboWisp.jpeg" />
-          <img id="deathEgg" src="exercici5 assets/deathEgg.jpeg" />
-          <img id="deathEggrobot" src="exercici5 assets/deathEggrobot.jpeg" />
-        </a-assets>
-        <a-plane position="-1 4 -8" rotation="0 0 0" width="8" height="2"  src="#guernica"
+    <a-scene>
+      <a-assets>
+        <img id="fons" src="exercici5 assets/Green Hill.jpeg" />
+        <img id="texturaterra" src="exercici5 assets/textura.jpeg" />
+        <img id="guernica" src="exercici5 assets/Sonic títol.jpeg" />        
+        <img id="cara" src="exercici5 assets/cubo.jpeg" />            
+        <img id="bicicletes" src="exercici5 assets/abstracto.png" />
+        <img id="wisp" src="exercici5 assets/cuboWisp.jpeg" />
+        <img id="deathEgg" src="exercici5 assets/deathEgg.jpeg" />
+        <img id="deathEggrobot" src="exercici5 assets/deathEggrobot.jpeg" />
+      </a-assets>
+      
+      <a-plane position="-1 4 -8" rotation="0 0 0" width="8" height="2"  src="#guernica"
         animation="property: position; to: -1 4 -30; dur: 5000; dir: alternate; loop: true">
-        </a-plane>
-        <a-plane position="-3 3 0" rotation="0 0 0"  width="8" height="2" src="#deathEggrobot">
-        </a-plane>
-        <a-box position="-4 3 0" rotation="0 0 0" src="#cara" depth="1" height="1" width="1"
+      </a-plane>
+      
+      <a-box position="-4 3 0" rotation="0 0 0" src="#cara" depth="1" height="1" width="1"
         animation__x="property: rotation; to: 360 360 360; dur: 4000; easing: linear; loop: true">
-        </a-box>
-        <a-sky src="#fons"></a-sky>
-        <a-plane position="0 0 0" rotation="-90 0 0" width="100" height="100" src="#texturaterra"></a-plane>
-        <a-sphere
+      </a-box>
+      
+      <a-box position="-4 1 0" rotation="0 0 50"  src="#wisp" depth="1" height="1" width="1"></a-box>
+      
+      <a-plane position="-3 2 1" rotation="0 0 0" width="2" height="2" src="#deathEggrobot"></a-plane>
+      
+      <a-sky src="#fons"></a-sky>
+      <a-plane position="0 0 0" rotation="-90 0 0" width="100" height="100" src="#texturaterra"></a-plane>
+      
+      <a-sphere
         position="-3 8 -10"
         radius="3"
         src="#deathEgg"
-        animation__rotation="property: rotation; to: 0 360 0; loop: true; dur: 8000; easing: linear"
-      ></a-sphere>
-        <a-box position="-4 1 0" rotation="0 0 50"  src="#wisp" depth="1" height="1" width="1"></a-box>
-        <a-dodecahedron position="8 2 -6" rotation="0 30 0" radius="3" src="#bicicletes"></a-dodecahedron>
-        </a-scene>
-        <audio src="Hedgehog Over the Horizons.mp3" controls autoplay loop></audio>
+        animation__rotation="property: rotation; to: 0 360 0; loop: true; dur: 8000; easing: linear">
+      </a-sphere>
+      
+      <a-dodecahedron position="8 2 -6" rotation="0 30 0" radius="3" src="#bicicletes"></a-dodecahedron>
+    </a-scene>
+    
+    <audio src="Hedgehog Over the Horizons.mp3" controls autoplay loop></audio>
   </body>
-
-</html>
+ </html>
