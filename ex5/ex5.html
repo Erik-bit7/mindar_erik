@@ -48,9 +48,22 @@
     </a-scene>
     <script>
       let unobjecte = document.querySelector("#esmou");
+      let animacionActiva = true;
 
       unobjecte.addEventListener("click", () => {
-        unobjecte.removeAttribute("animation"); 
+        if (animacionActiva) {
+          unobjecte.removeAttribute("animation"); // Detiene la animación
+        } else {
+          unobjecte.setAttribute("animation", {
+            property: "position",
+            from: "8 2 -6",
+            to: "8 8 -6",
+            dur: 2000,
+            dir: "alternate",
+            loop: true
+          }); // Reactiva la animación
+        }
+        animacionActiva = !animacionActiva;
       });
     </script>
 
