@@ -46,19 +46,9 @@
     </a-scene>
     <script>
       let unobjecte = document.querySelector("#esmou");
-   
-      unobjecte.addEventListener("click", () => {            
-        unobjecte.setAttribute("animation", {
 
-
-          property: "position",
-
-
-          to: "8 40 -6",
-
-
-          dur: 10000
-        });
+      unobjecte.addEventListener("click", () => {
+        unobjecte.removeAttribute("animation"); // Detener animación al hacer clic
       });
     </script>
 
