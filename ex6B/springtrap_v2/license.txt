@@ -1,0 +1,11 @@
+Model Information:
+* title:	Springtrap V2
+* source:	https://sketchfab.com/3d-models/springtrap-v2-8a6628541afe4df5bb6c3b48d9a18b36
+* author:	marcosfranciscosisniega (https://sketchfab.com/marcosfranciscosisniega)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Springtrap V2" (https://sketchfab.com/3d-models/springtrap-v2-8a6628541afe4df5bb6c3b48d9a18b36) by marcosfranciscosisniega (https://sketchfab.com/marcosfranciscosisniega) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
