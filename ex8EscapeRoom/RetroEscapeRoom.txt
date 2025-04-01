@@ -1,0 +1,47 @@
+Història:
+Un error en el temps ha fusionat diferents mons de videojocs clàssics en una sola realitat caòtica.
+ Ets l'únic que pot restaurar l'ordre! 
+ Has de viatjar a través de mons mítics com Super Mario, Doom, Sonic i Metal Gear per trobar les peces del rellotge quàntic i 
+ reparar la línia temporal. Per accedir al joc, primer has de demostrar que estàs preparat per l'aventura!
+
+Objectiu:
+Recórrer els 4 mons, resoldre els enigmes i trobar les quatre peces del rellotge quàntic. 
+Un cop les tinguis totes, hauràs de superar una prova final per arreglar la línia temporal.
+
+🌍 Món 1: Super Mario Bros
+Estètica: Gràfics 2D de píxels amb núvols amb ulls, blocs trencables i canonades verdes.
+
+Música: Overworld Theme del primer Super Mario Bros.
+
+Enigma: Trobar un bloc invisible que conté una pista per a la porta.
+
+Objecte: Un bolet amb una URL que revela part de la contrasenya.
+
+🔥 Món 2: Doom
+Estètica: 3D amb textures pixelades d’infern, passadissos de metall i dimonis.
+
+Música: E1M1 - At Doom’s Gate (versió original de Doom).
+
+Enigma: Localitzar la targeta d’accés oculta per obrir una porta demoníaca.
+
+Objecte: Un megasphere que mostra coordenades d'un altre món.
+
+🌀 Món 3: Sonic the Hedgehog
+Estètica: Green Hill Zone amb anelles flotants, loopings i palmers gegants.
+
+Música: Green Hill Zone Theme.
+
+Enigma: Un monitor d’objectes trencat amaga una pista clau.
+
+Objecte: Una Esmeralda del Caos amb un codi per una de les portes.
+
+🎖️ Món 4: Metal Gear
+Estètica: Un complex militar amb càmeres de seguretat, soldats i alarmes.
+
+Música: Encounter Theme de Metal Gear Solid.
+
+Enigma: Hauràs d’evitar ser detectat i trobar la contrasenya secreta.
+
+Objecte: Una targeta d’accés de nivell 10 amb la clau final.
+
+La sortida serà una porta especial que combina elements dels quatre mons i requerirà utilitzar totes les pistes recollides. 🔥
