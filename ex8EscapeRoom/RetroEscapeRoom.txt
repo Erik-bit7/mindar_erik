@@ -1,8 +1,8 @@
 Història:
 Un error en el temps ha fusionat diferents mons de videojocs clàssics en una sola realitat caòtica.
- Ets l'únic que pot restaurar l'ordre! 
- Has de viatjar a través de mons mítics com Super Mario, Doom, Sonic i Metal Gear per trobar les peces del rellotge quàntic i 
- reparar la línia temporal. Per accedir al joc, primer has de demostrar que estàs preparat per l'aventura!
+Ets l'únic que pot restaurar l'ordre! Has de viatjar a través de mons mítics com Super Mario, Doom, Sonic i Metal Gear,
+per trobar les peces del rellotge quàntic i reparar la línia temporal. 
+Per accedir al joc, primer has de demostrar que estàs preparat per l'aventura!
 
 Objectiu:
 Recórrer els 4 mons, resoldre els enigmes i trobar les quatre peces del rellotge quàntic. 
