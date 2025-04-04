@@ -4,21 +4,10 @@
     <title>Mon1</title>
    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
    <script>
-    AFRAME.registerComponent("mylink", {
-      schema: {
-        href: {type: 'string'}
-      },
-      init: function() {  
-        this.el.addEventListener("click", (e) => {              
-          window.location = this.data.href;      
-        });
-      }
-    });
-
     AFRAME.registerComponent("show-hint", {
       init: function() {
         this.el.addEventListener("click", () => {
-          alert("Pista: Busca la porta darrere del núvol!");
+          alert("Pista: Busca la porta invisible dins de la tuberia prop de l'estrella!");
         });
       }
     });
@@ -30,29 +19,23 @@
           <audio autoplay loop>
             <source src="assets/overworld-theme.mp3" type="audio/mpeg">
           </audio>
+          <a-asset-item id="blockModel" src="Bloque/block.gltf"></a-asset-item>
         </a-assets>
 
         <a-sky src="assets/Mario-world.jpeg"></a-sky>
       
-        <!-- Bolet 3D (interactiu) -->
-        <a-sphere id="mushroom" position="2 1 -3" radius="0.5" color="red"
-                  onclick="showPasswordHint()"></a-sphere>
+        <!-- Bloque camuflado con la pista -->
+        <a-entity gltf-model="#blockModel" position="1 2 -3" scale="0.5 0.5 0.5" show-hint></a-entity>
 
         <!-- Porta de sortida -->
         <a-box id="exitDoor" position="-2 1 -3" width="1" height="2" depth="0.5" color="#654321"
-               onclick="checkQuestion()"></a-box>
+               material="opacity: 0; transparent: true" onclick="checkQuestion()"></a-box>
 
         <!-- Cámara al nivel del suelo -->
         <a-camera position="0 0.5 0"></a-camera>
     </a-scene>
 
     <script>
-      function showHint() {
-          alert("Has trobat un bloc invisible! Pista: Visita https://part1-clau.com");
-      }
-      function showPasswordHint() {
-          alert("El bolet et diu: La contrasenya comença per 'MARIO'.");
-      }
       function checkQuestion() {
           let resposta = prompt("Quin any es va llançar el primer Super Mario Bros?");
           if (resposta == "1985") {
