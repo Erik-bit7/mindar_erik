@@ -63,10 +63,13 @@
 
     <script>
         function iniciarJoc() {
+            // Pregunta al usuario el año de lanzamiento del primer Super Mario Bros
             let resposta = prompt("En quin any es va llançar el primer joc de Super Mario Bros?");
             if (resposta && resposta.trim() === "1985") {
-                window.location.href = "mon1.html";
+                // Redirige al archivo mon1.html si la respuesta es correcta
+                window.location.href = "mundo1/mon1.html";
             } else {
+                // Muestra un mensaje de error si la respuesta es incorrecta
                 alert("Resposta incorrecta! Torna-ho a intentar.");
             }
         }
