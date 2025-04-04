@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>Mon1</title>
+   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+   <script>
+    AFRAME.registerComponent("mylink", {
+      schema: {
+        href: {type: 'string'}
+      },
+      init: function() {  
+        this.el.addEventListener("click", (e) => {              
+          window.location = this.data.href;      
+        });
+      }
+    });
+
+    AFRAME.registerComponent("show-hint", {
+      init: function() {
+        this.el.addEventListener("click", () => {
+          alert("Pista: Busca la porta darrere del núvol!");
+        });
+      }
+    });
+   </script>
+ </head>
+<body>
+    <a-scene cursor="rayOrigin: mouse">
+        <a-assets>
+          <img id="imgSortida" src="assets/entragroc.png">
+          <img id="imgFantasma" src="assets/fantasma.png">
+          <img id="imgmon" src="assets/fnaf.jpg">
+          <a-asset-item id="springtrap" src="springtrap_v2/scene.gltf"></a-asset-item>
+          <img id="sonic" src="assets/classicSonic.jpeg">
+          <img id="cloud" src="assets/cloud.png">
+          <img id="pipe" src="assets/pipe.png">
+          <audio id="bg-music" src="assets/overworld-theme.mp3" autoplay loop></audio>
+        </a-assets>
+       
+        <a-sky src="#imgmon"></a-sky>
+
+        <!-- Núvol -->
+        <a-image src="#cloud" position="0 3 -5" scale="4 2 1"></a-image>
+
+        <!-- Canonada -->
+        <a-image src="#pipe" position="-2 0 -4" scale="1 2 1"></a-image>
+
+        <!-- Bloc invisible amb pista -->
+        <a-box position="0 2 -3" scale="0.5 0.5 0.5" material="opacity: 0; transparent: true" show-hint></a-box>
+
+        <!-- Música de fons -->
+        <a-entity sound="src: #bg-music; autoplay: true; loop: true"></a-entity>
+    </a-scene>
+</body>
+</html>
