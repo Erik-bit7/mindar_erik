@@ -37,21 +37,37 @@
           <audio autoplay loop>
             <source src="assets/overworld-theme.mp3" type="audio/mpeg">
         </audio>
-        </a-assets>
-       
-        <a-sky src="#imgmon"></a-sky>
+        
 
-        <!-- Núvol -->
-        <a-image src="#cloud" position="0 3 -5" scale="4 2 1"></a-image>
+    <a-scene>
 
-        <!-- Canonada -->
-        <a-image src="#pipe" position="-2 0 -4" scale="1 2 1"></a-image>
+      <a-sky src="assets/mario-theme.png"></a-sky>
+      
+      <!-- Bolet 3D (interactiu) -->
+      <a-sphere id="mushroom" position="2 1 -3" radius="0.5" color="red"
+                onclick="showPasswordHint()"></a-sphere>
 
-        <!-- Bloc invisible amb pista -->
-        <a-box position="0 2 -3" scale="0.5 0.5 0.5" material="opacity: 0; transparent: true" show-hint></a-box>
+      <!-- Porta de sortida -->
+      <a-box id="exitDoor" position="-2 1 -3" width="1" height="2" depth="0.5" color="#654321"
+             onclick="checkQuestion()"></a-box>
 
-        <!-- Música de fons -->
-        <a-entity sound="src: #bg-music; autoplay: true; loop: true"></a-entity>
-    </a-scene>
+  </a-scene>
+
+  <script>
+      function showHint() {
+          alert("Has trobat un bloc invisible! Pista: Visita https://part1-clau.com");
+      }
+      function showPasswordHint() {
+          alert("El bolet et diu: La contrasenya comença per 'MARIO'.");
+      }
+      function checkQuestion() {
+          let resposta = prompt("Quin any es va llançar el primer Super Mario Bros?");
+          if (resposta == "1985") {
+              alert("Correcte! Has avançat al següent món!");
+          } else {
+              alert("Incorrecte! Torna-ho a intentar.");
+          }
+      }
+</script>
 </body>
 </html>
