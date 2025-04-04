@@ -7,7 +7,7 @@
     AFRAME.registerComponent("show-hint", {
       init: function() {
         this.el.addEventListener("click", () => {
-          alert("Pista: Busca la porta invisible dins de la tuberia prop de l'estrella!");
+          alert("Pista: Busca la puerta invisible entre una tuberia casi al nivel del suelo i una estralla que esta en el suelo");
         });
       }
     });
@@ -41,8 +41,8 @@
 
     <script>
       function checkQuestion() {
-          let resposta = prompt("Quin any es va llançar el primer Super Mario Bros?");
-          if (resposta == "1985") {
+          let resposta = prompt("Como se llama la otra variante de Mario? (La primera letra de cada parte del nombre en mayusculo y haz separacion)");
+          if (resposta == "Paper Mario") {
               alert("Correcte! Has avançat al següent món!");
           } else {
               alert("Incorrecte! Torna-ho a intentar.");
