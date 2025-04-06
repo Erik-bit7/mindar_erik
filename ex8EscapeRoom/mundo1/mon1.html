@@ -27,9 +27,25 @@
 
         <!-- Fondo del mundo -->
         <a-sky src="assets/Mario-world.jpeg"></a-sky>
-      
-        <!-- Bloque camuflado con la pista -->
-        <a-entity gltf-model="#blockModel" position="-250 200 200" scale="0.2 0.2 0.2" show-hint></a-entity>
+
+
+        <!-- Modelo de bloques clon -->
+        <a-asset-item id="blockModel" src="assets/block/scene.gltf"></a-asset-item>
+
+        <!-- Modelo de bloque pista -->
+        <a-asset-item id="bloqueModel" src="assets/Bloque/scene.gltf"></a-asset-item>
+
+        <!-- Bloques distribuidos por los límites del mapa con tamaño muy pequeño y más altos -->
+        <a-entity gltf-model="#blockModel" position="-20 5 -20" scale="0.01 0.01 0.01"></a-entity>
+        <a-entity gltf-model="#blockModel" position="20 5 -20" scale="0.01 0.01 0.01"></a-entity>
+        <a-entity gltf-model="#blockModel" position="-20 5 20" scale="0.01 0.01 0.01"></a-entity>
+        <a-entity gltf-model="#blockModel" position="0 5 -25" scale="0.01 0.01 0.01"></a-entity>
+        <a-entity gltf-model="#blockModel" position="0 5 25" scale="0.01 0.01 0.01"></a-entity>
+        <a-entity gltf-model="#blockModel" position="-25 5 0" scale="0.01 0.01 0.01"></a-entity>
+        <a-entity gltf-model="#blockModel" position="25 5 0" scale="0.01 0.01 0.01"></a-entity>
+
+        <!-- Bloque con la pista más alto -->
+        <a-entity gltf-model="#bloqueModel" position="20 2 20" scale="0.01 0.01 0.01" show-hint></a-entity>
 
         <!-- Porta de sortida invisible -->
         <a-box id="exitDoor" position="-2 1 -3" width="1" height="1" depth="1" 
