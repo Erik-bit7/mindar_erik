@@ -56,19 +56,47 @@
                  onclick="goToHome()" material="transparent: true">
         </a-plane>
 
-<!-- Cámara al nivel del suelo -->
+        <!-- Cámara al nivel del suelo -->
         <a-camera position="0 0.5 0"></a-camera>
     </a-scene>
 
     <script>
+      // Temporizador de 60 segundos
+      let timer = 60; // Tiempo inicial en segundos
+      const countdown = setInterval(() => {
+        timer--;
+        if (timer <= 0) {
+          clearInterval(countdown);
+          alert("¡Se acabó el tiempo! Inténtalo de nuevo.");
+          window.location.reload(); // Reinicia el nivel
+        }
+      }, 1000);
+
+      // Mostrar el temporizador en pantalla
+      const timerDisplay = document.createElement("div");
+      timerDisplay.style.position = "absolute";
+      timerDisplay.style.top = "10px";
+      timerDisplay.style.left = "10px";
+      timerDisplay.style.color = "white";
+      timerDisplay.style.fontSize = "24px";
+      timerDisplay.style.fontFamily = "Arial, sans-serif";
+      timerDisplay.innerHTML = `Tiempo restante: ${timer}s`;
+      document.body.appendChild(timerDisplay);
+
+      // Actualizar el temporizador en pantalla
+      setInterval(() => {
+        timerDisplay.innerHTML = `Tiempo restante: ${timer}s`;
+      }, 1000);
+
       function checkQuestion() {
           let resposta = prompt("Como se llama el rival de Mario que es fontanero al igual que el, pero tambien caza tesoros? (La primera letra del nombre en mayuscula)");
           if (resposta == "Wario") {
+              clearInterval(countdown); // Detener el temporizador
               alert("Correcto! Has avançado al siguiente mundo!") 
               window.location.href = "mundo2/mon2.html";
           } else {
               alert("Mal! Vuelve a intentarlo.");
-  }
+          }
       }
 
       function goToHome() {
