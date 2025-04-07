@@ -1,52 +1,48 @@
 <!DOCTYPE html>
 <html>
- <head>
-    <title>Mon3</title>
-   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-   <script>
+<head>
+  <title>Mon3</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
+<body>
+  <!-- Música de fondo fuera de <a-scene> -->
+  <audio autoplay loop>
+    <source src="assets/Green-Hill-Zone.mp3" type="audio/mpeg">
+  </audio>
+
+  <a-scene cursor="rayOrigin: mouse">
+    <!-- Fondo del mundo -->
+    <a-sky src="assets/world.jpeg" rotation="0 -90 0"></a-sky>
+
+    <!-- Caja invisible interactiva -->
+    <a-box id="exitDoor" position="-2 1 -3" width="1" height="1" depth="1"
+           material="opacity: 0; transparent: true"
+           show-hint>
+    </a-box>
+
+    <!-- Cámara al nivel del suelo -->
+    <a-camera position="0 1.6 0"></a-camera>
+  </a-scene>
+
+  <!-- Componente para mostrar alerta -->
+  <script>
     AFRAME.registerComponent("show-hint", {
-      init: function() {
+      init: function () {
         this.el.addEventListener("click", () => {
-          alert("");
+          checkQuestion();
         });
       }
     });
-   </script>
- </head>
-<body>
-    <a-scene cursor="rayOrigin: mouse">
-        <a-assets>
-          <!-- Música de fondo -->
-          <audio autoplay loop>
-            <source src="assets/Green-Hill-Zone.mp3" type="audio/mpeg">
-          </audio>
 
-          <a-torus color="gold" radius="0.3" radius-tubular="0.05" position="1 1.5 -2" rotation="90 0 0"></a-torus>
-          <a-torus color="gold" radius="0.3" radius-tubular="0.05" position="2 1.2 -2.5" rotation="90 0 0"></a-torus>
-          <a-torus color="gold" radius="0.3" radius-tubular="0.05" position="-1 1.7 -2" rotation="90 0 0"></a-torus>
-
-        <!-- Fondo del mundo -->
-        <a-sky src="assets/greenHill.jpeg"></a-sky>
-
-
-        <!-- Porta de sortida invisible -->
-        <a-box id="exitDoor" position="-2 1 -3" width="1" height="1" depth="1" 
-               material="opacity: 0; transparent: true" onclick="checkQuestion()"></a-box>
-
-<!-- Cámara al nivel del suelo -->
-        <a-camera position="0 0.5 0"></a-camera>
-    </a-scene>
-
-    <script>
-      function checkQuestion() {
-          let resposta = prompt("¿Cómo se llaman las gemas que tramsforman a Sonic en Super Sonic? (Nombre en ingles, una separacion y mayuscula al pricipio de cada palabra)");
-          if (resposta == "Chaos Emeralds") {
-              alert("Correcto! Has avançado al siguiente mundo!") 
-              window.location.href = "mundo4/mon4.html";
-          } else {
-              alert("Mal! Vuelve a intentarlo.");
-  }
+    function checkQuestion() {
+      let resposta = prompt("¿Cómo se llaman las gemas que transforman a Sonic en Super Sonic? (Nombre en inglés, una separación y mayúscula al principio de cada palabra)");
+      if (resposta === "Chaos Emeralds") {
+        alert("¡Correcto! Has avanzado al siguiente mundo!");
+        window.location.href = "mundo4/mon4.html";
+      } else {
+        alert("¡Mal! Vuelve a intentarlo.");
       }
-    </script>
+    }
+  </script>
 </body>
 </html>

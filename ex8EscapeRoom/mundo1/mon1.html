@@ -52,7 +52,7 @@
                material="opacity: 0; transparent: true" onclick="checkQuestion()"></a-box>
 
         <!-- Salida hacia atrás con textura de entragroc.png -->
-        <a-plane id="backToHome" position="0 4 30" rotation="0 180 0" width="5" height="5" src="assets/Return.jpg" 
+        <a-plane id="backToHome" position="0 5 -30" rotation="0 180 0" width="5" height="5" src="assets/Return.jpg" 
                  onclick="goToHome()" material="transparent: true">
         </a-plane>
 
@@ -72,7 +72,8 @@
       }
 
       function goToHome() {
-        window.location.href = "/mindar_erik/ex8EscapeRoom/RetroEscapeRoom.html"; // Redirige a la página de inicio
+        // Redirige a la página de inicio
+        window.location.href = "/mindar_erik/ex8EscapeRoom/RetroEscapeRoom.html";
       }
     </script>
 </body>
