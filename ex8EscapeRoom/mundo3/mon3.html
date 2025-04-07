@@ -7,7 +7,7 @@
     AFRAME.registerComponent("show-hint", {
       init: function() {
         this.el.addEventListener("click", () => {
-          alert("Pista: Busca la puerta invisible entre una tuberia casi al nivel del suelo i una estralla que esta en el suelo");
+          alert("");
         });
       }
     });
@@ -18,15 +18,15 @@
         <a-assets>
           <!-- Música de fondo -->
           <audio autoplay loop>
-            <source src="assets/Green Hill Zone.mp3" type="audio/mpeg">
+            <source src="assets/Green-Hill-Zone.mp3" type="audio/mpeg">
           </audio>
 
-          <!-- Modelo del bloque -->
-          <a-asset-item id="blockModel" src="assets/Bloque/scene.gltf"></a-asset-item>
-        </a-assets>
+          <a-torus color="gold" radius="0.3" radius-tubular="0.05" position="1 1.5 -2" rotation="90 0 0"></a-torus>
+          <a-torus color="gold" radius="0.3" radius-tubular="0.05" position="2 1.2 -2.5" rotation="90 0 0"></a-torus>
+          <a-torus color="gold" radius="0.3" radius-tubular="0.05" position="-1 1.7 -2" rotation="90 0 0"></a-torus>
 
         <!-- Fondo del mundo -->
-        <a-sky src="assets/Green Hill.jpeg"></a-sky>
+        <a-sky src="assets/Green-Hill.jpeg"></a-sky>
 
 
         <!-- Porta de sortida invisible -->
@@ -39,10 +39,10 @@
 
     <script>
       function checkQuestion() {
-          let resposta = prompt("Como se llama el rival de Mario que es fontanero al igual que el, pero tambien caza tesoros? (La primera letra del nombre en mayuscula)");
-          if (resposta == "Wario") {
+          let resposta = prompt("¿Cómo se llaman las gemas que tramsforman a Sonic en Super Sonic? (Nombre en ingles, una separacion y mayuscula al pricipio de cada palabra)");
+          if (resposta == "Chaos Emeralds") {
               alert("Correcto! Has avançado al siguiente mundo!") 
-              window.location.href = "mundo2/mon2.html";
+              window.location.href = "mundo4/mon4.html";
           } else {
               alert("Mal! Vuelve a intentarlo.");
   }
