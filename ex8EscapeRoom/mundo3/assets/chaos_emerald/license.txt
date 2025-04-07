@@ -1,0 +1,11 @@
+Model Information:
+* title:	Chaos Emerald - Sonic The Hedgehog
+* source:	https://sketchfab.com/3d-models/chaos-emerald-sonic-the-hedgehog-c83c3860e22c42e2a189ce5b03d80a4e
+* author:	EliasCoptere (https://sketchfab.com/EliasCoptere)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Chaos Emerald - Sonic The Hedgehog" (https://sketchfab.com/3d-models/chaos-emerald-sonic-the-hedgehog-c83c3860e22c42e2a189ce5b03d80a4e) by EliasCoptere (https://sketchfab.com/EliasCoptere) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
