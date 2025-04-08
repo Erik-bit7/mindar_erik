@@ -1,0 +1,11 @@
+Model Information:
+* title:	Bench Cat
+* source:	https://sketchfab.com/3d-models/bench-cat-8ddc585959ee4cbeaf93c27763881f61
+* author:	blacknibow (https://sketchfab.com/blacknibow)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Bench Cat" (https://sketchfab.com/3d-models/bench-cat-8ddc585959ee4cbeaf93c27763881f61) by blacknibow (https://sketchfab.com/blacknibow) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

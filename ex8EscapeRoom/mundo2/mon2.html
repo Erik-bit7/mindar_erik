@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mon2 - Doom</title>
+  <title>Mon2 - Doom Laberinto</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/supermedium/aframe-physics-system@4.0.1/dist/aframe-physics-system.min.js"></script>
   <script>
     AFRAME.registerComponent("show-hint", {
       init: function () {
         this.el.addEventListener("click", () => {
-          alert("💡 Pista: La targeta vermella està amagada darrere d'un mur amb sang seca.");
+          alert("💡 Pista: Busca la targeta.");
+        });
+      }
+    });
+
+    AFRAME.registerComponent("reveal-door", {
+      init: function () {
+        this.el.addEventListener("click", () => {
+          // Muestra un mensaje y revela la puerta
+          alert("💻 El ordenador (puerta) ahora está al descubierto.");
+          document.querySelector("#exitDoor").setAttribute("visible", "true");
         });
       }
     });
@@ -20,31 +31,61 @@
       <audio id="doomMusic" src="assets/at-dooms-gate.mp3" preload="auto"></audio>
       <a-sound src="#doomMusic" autoplay="true" loop="true" position="0 2 0"></a-sound>
 
-      <!-- Textura de Doom -->
+      <!-- Texturas de Doom -->
       <img id="wallTexture" src="assets/doom_wall.png">
       <img id="floorTexture" src="assets/doom_floor.jpg">
       <img id="ceilingTexture" src="assets/doom_ceiling.jpg">
+      <img id="keyTexture" src="assets/Key.jpg">
+      <a-asset-item id="marineModel" src="\assets\doom_voxel_marines\scene.gltf"></a-asset-item>
+      <a-asset-item id="demonModel" src="assets/doom_cacodemon.glb"></a-asset-item>
+      <a-asset-item id="computerModel" src="assets/computer/scene.gltf"></a-asset-item>
     </a-assets>
 
-    <!-- Suelo -->
-    <a-plane src="#floorTexture" rotation="-90 0 0" width="20" height="20" repeat="5 5"></a-plane>
+    <!-- Texto inicial -->
+    <a-text value="Busca la targeta roja para avanzar." color="red" position="0 3 -5" align="center" width="6"></a-text>
 
-    <!-- Paredes estilo Doom -->
-    <a-box position="-5 1 0" depth="0.1" height="2" width="10" src="#wallTexture"></a-box>
-    <a-box position="5 1 0" depth="0.1" height="2" width="10" src="#wallTexture"></a-box>
-    <a-box position="0 1 -5" width="10" height="2" depth="0.1" src="#wallTexture"></a-box>
-    <a-box position="0 1 5" width="10" height="2" depth="0.1" src="#wallTexture"></a-box>
+    <!-- Suelo -->
+    <a-plane src="#floorTexture" rotation="-90 0 0" width="40" height="40" repeat="10 10"></a-plane>
 
     <!-- Techo -->
-    <a-plane src="#ceilingTexture" rotation="90 0 0" position="0 2 0" width="20" height="20"></a-plane>
+    <a-plane src="#ceilingTexture" rotation="90 0 0" position="0 4 0" width="40" height="40"></a-plane>
+
+    <!-- Paredes externas del laberinto -->
+    <a-box position="0 2 -20" depth="0.1" height="4" width="40" src="#wallTexture" static-body></a-box>
+    <a-box position="0 2 20" depth="0.1" height="4" width="40" src="#wallTexture" static-body></a-box>
+    <a-box position="-20 2 0" width="0.1" height="4" depth="40" src="#wallTexture" static-body></a-box>
+    <a-box position="20 2 0" width="0.1" height="4" depth="40" src="#wallTexture" static-body></a-box>
+
+    <!-- Laberinto interno -->
+    <a-box position="-10 2 -15" depth="0.1" height="4" width="10" src="#wallTexture" static-body></a-box>
+    <a-box position="10 2 -15" depth="0.1" height="4" width="10" src="#wallTexture" static-body></a-box>
+    <a-box position="0 2 -10" width="0.1" height="4" depth="20" src="#wallTexture" static-body></a-box>
+    <a-box position="5 2 -5" width="10" height="4" depth="0.1" src="#wallTexture" static-body></a-box>
+    <a-box position="-5 2 0" width="0.1" height="4" depth="10" src="#wallTexture" static-body></a-box>
+    <a-box position="10 2 5" depth="0.1" height="4" width="10" src="#wallTexture" static-body></a-box>
+    <a-box position="-10 2 10" depth="0.1" height="4" width="10" src="#wallTexture" static-body></a-box>
+    <a-box position="0 2 15" width="0.1" height="4" depth="20" src="#wallTexture" static-body></a-box>
+
+    <!-- Pared con sangre -->
+    <a-box position="-15 2 -10" depth="0.1" height="4" width="10" src="#WallTexture" static-body></a-box>
 
     <!-- Tarjeta roja escondida -->
-    <a-box id="redCard" position="-1 0.5 -2" width="0.3" height="0.2" depth="0.05" 
-           color="red" show-hint></a-box>
+    <a-plane id="redCard" position="-15 1.5 -9.9" rotation="0 0 0" width="0.5" height="0.5" src="#keyTexture" reveal-door></a-plane>
 
-    <!-- Puerta invisible con pregunta -->
-    <a-box id="exitDoor" position="0 1 4.9" width="1" height="2" depth="0.1"
-           material="opacity: 0; transparent: true" onclick="checkQuestion()"></a-box>
+    <!-- Marines -->
+    <a-entity gltf-model="#marineModel" position="5 0 -5" scale="0.5 0.5 0.5"></a-entity>
+    <a-entity gltf-model="#marineModel" position="-5 0 -10" scale="0.5 0.5 0.5"></a-entity>
+
+    <!-- Demonios -->
+    <a-entity gltf-model="#demonModel" position="10 0 10" scale="0.5 0.5 0.5"></a-entity>
+    <a-entity gltf-model="#demonModel" position="-10 0 5" scale="0.5 0.5 0.5"></a-entity>
+
+    <!-- Ordenador oculto -->
+    <a-entity id="computer" gltf-model="#computerModel" position="0 0 18" scale="0.5 0.5 0.5" visible="false"></a-entity>
+
+    <!-- Puerta invisible (ordenador) -->
+    <a-box id="exitDoor" position="0 2 19.9" width="1" height="4" depth="0.1"
+           material="opacity: 0; transparent: true" visible="false" onclick="checkQuestion()"></a-box>
 
     <!-- Cámara con movimiento estilo Doom -->
     <a-entity id="rig" movement-controls position="0 0 0">

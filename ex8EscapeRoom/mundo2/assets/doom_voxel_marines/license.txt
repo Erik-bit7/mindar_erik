@@ -1,0 +1,11 @@
+Model Information:
+* title:	Doom Voxel Marines
+* source:	https://sketchfab.com/3d-models/doom-voxel-marines-1cb0447e1ae34a74a942710202e37e49
+* author:	devinrbriggs (https://sketchfab.com/devinrbriggs)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Doom Voxel Marines" (https://sketchfab.com/3d-models/doom-voxel-marines-1cb0447e1ae34a74a942710202e37e49) by devinrbriggs (https://sketchfab.com/devinrbriggs) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

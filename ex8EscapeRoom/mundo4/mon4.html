@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mon4 - Metal Gear</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script>
+    AFRAME.registerComponent("trigger-alarm", {
+      init: function () {
+        this.el.addEventListener("mouseenter", () => {
+          alert("🚨 Alarma! Has estat detectat! Torna a començar des del punt inicial.");
+          document.querySelector("#rig").setAttribute("position", "0 0 0");
+        });
+      }
+    });
+
+    AFRAME.registerComponent("show-hint", {
+      init: function () {
+        this.el.addEventListener("click", () => {
+          alert("📡 Pista: La targeta d'accés es troba darrere d'una caixa al costat d'una càmera de seguretat.");
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <a-scene>
+    <a-assets>
+      <!-- Música d'ambient -->
+      <audio id="metalGearMusic" src="assets/EncounterTheme.mp3" preload="auto"></audio>
+      <a-sound src="#metalGearMusic" autoplay="true" loop="true" position="0 2 0"></a-sound>
+
+      <!-- Textures -->
+      <img id="wallTexture" src="assets/metal_wall.jpg">
+      <img id="floorTexture" src="assets/metal_floor.jpg">
+    </a-assets>
+
+    <!-- Sòl -->
+    <a-plane src="#floorTexture" rotation="-90 0 0" width="30" height="30" repeat="5 5"></a-plane>
+
+    <!-- Pareds (passadissos del complex militar) -->
+    <a-box position="0 1 -5" width="20" height="2" depth="0.1" src="#wallTexture"></a-box>
+    <a-box position="10 1 0" depth="20" height="2" width="0.1" src="#wallTexture"></a-box>
+    <a-box position="-10 1 0" depth="20" height="2" width="0.1" src="#wallTexture"></a-box>
+
+    <!-- Zona d'alarma (detector) -->
+    <a-box position="2 0.1 -2" width="3" height="0.2" depth="3" color="red" trigger-alarm opacity="0.2"></a-box>
+
+    <!-- Càmera de seguretat (simulada) -->
+    <a-sphere position="2 2 -2" radius="0.2" color="black" show-hint></a-sphere>
+
+    <!-- Targeta d'accés amagada -->
+    <a-box id="keyCard" position="1.5 0.5 -3" width="0.3" height="0.2" depth="0.05" 
+           color="#00ccff" show-hint></a-box>
+
+    <!-- Porta invisible amb pregunta -->
+    <a-box id="exitDoor" position="0 1 5" width="1" height="2" depth="0.1"
+           material="opacity: 0; transparent: true" onclick="checkQuestion()"></a-box>
+
+    <!-- Decoració: caixes metàl·liques -->
+    <a-box position="1.5 0.5 -3.5" width="1" height="1" depth="1" color="#333"></a-box>
+    <a-box position="-2 0.5 -1" width="1" height="1" depth="1" color="#444"></a-box>
+
+    <!-- Càmera i moviment 3D -->
+    <a-entity id="rig" movement-controls position="0 0 0">
+      <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
+    </a-entity>
+  </a-scene>
+
+  <script>
+    function checkQuestion() {
+      let resposta = prompt("¿Cómo se llama el protagonista de Metal Gear Solid? (Nombre y apellido, primera letra mayúscula)");
+      if (resposta === "Solid Snake") {
+        alert("Correcto! Has completado la missió!");
+        window.location.href = "final.html";
+      } else {
+        alert("Incorrecto. Intenta de nuevo.");
+      }
+    }
+  </script>
+</body>
+</html>
