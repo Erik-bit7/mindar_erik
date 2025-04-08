@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mon2 - Doom</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script>
+    AFRAME.registerComponent("show-hint", {
+      init: function () {
+        this.el.addEventListener("click", () => {
+          alert("💡 Pista: La targeta vermella està amagada darrere d'un mur amb sang seca.");
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <a-scene>
+    <a-assets>
+      <!-- Música ambiente -->
+      <audio id="doomMusic" src="assets/at-dooms-gate.mp3" preload="auto"></audio>
+      <a-sound src="#doomMusic" autoplay="true" loop="true" position="0 2 0"></a-sound>
+
+      <!-- Textura de Doom -->
+      <img id="wallTexture" src="assets/doom_wall.png">
+      <img id="floorTexture" src="assets/doom_floor.jpg">
+      <img id="ceilingTexture" src="assets/doom_ceiling.jpg">
+    </a-assets>
+
+    <!-- Suelo -->
+    <a-plane src="#floorTexture" rotation="-90 0 0" width="20" height="20" repeat="5 5"></a-plane>
+
+    <!-- Paredes estilo Doom -->
+    <a-box position="-5 1 0" depth="0.1" height="2" width="10" src="#wallTexture"></a-box>
+    <a-box position="5 1 0" depth="0.1" height="2" width="10" src="#wallTexture"></a-box>
+    <a-box position="0 1 -5" width="10" height="2" depth="0.1" src="#wallTexture"></a-box>
+    <a-box position="0 1 5" width="10" height="2" depth="0.1" src="#wallTexture"></a-box>
+
+    <!-- Techo -->
+    <a-plane src="#ceilingTexture" rotation="90 0 0" position="0 2 0" width="20" height="20"></a-plane>
+
+    <!-- Tarjeta roja escondida -->
+    <a-box id="redCard" position="-1 0.5 -2" width="0.3" height="0.2" depth="0.05" 
+           color="red" show-hint></a-box>
+
+    <!-- Puerta invisible con pregunta -->
+    <a-box id="exitDoor" position="0 1 4.9" width="1" height="2" depth="0.1"
+           material="opacity: 0; transparent: true" onclick="checkQuestion()"></a-box>
+
+    <!-- Cámara con movimiento estilo Doom -->
+    <a-entity id="rig" movement-controls position="0 0 0">
+      <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
+    </a-entity>
+  </a-scene>
+
+  <script>
+    function checkQuestion() {
+      let resposta = prompt("¿Cuál es el nombre del primer nivel del Doom clásico de 1993? (Usa el formato 'E1M1')");
+      if (resposta === "E1M1") {
+        alert("Correcto! Has avançado al següent món!");
+        window.location.href = "mundo3/mon3.html";
+      } else {
+        alert("Incorrecto. Intenta de nuevo.");
+      }
+    }
+  </script>
+</body>
+</html>
