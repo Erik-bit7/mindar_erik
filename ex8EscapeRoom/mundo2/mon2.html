@@ -4,11 +4,12 @@
   <title>Mon2 - Doom Laberinto</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/supermedium/aframe-physics-system@4.0.1/dist/aframe-physics-system.min.js"></script>
+
   <script>
     AFRAME.registerComponent("show-hint", {
       init: function () {
         this.el.addEventListener("click", () => {
-          alert("💡 Pista: Busca la targeta.");
+          alert("💡 Pista: Busca la targeta roja.");
         });
       }
     });
@@ -16,8 +17,7 @@
     AFRAME.registerComponent("reveal-door", {
       init: function () {
         this.el.addEventListener("click", () => {
-          // Muestra un mensaje y revela la puerta
-          alert("💻 El ordenador (puerta) ahora está al descubierto.");
+          alert("💻 Has activado el terminal. La salida está visible.");
           document.querySelector("#exitDoor").setAttribute("visible", "true");
         });
       }
@@ -25,79 +25,77 @@
   </script>
 </head>
 <body>
-  <a-scene>
-    <a-assets>
-      <!-- Música ambiente -->
+  <a-scene physics="debug: false">
+    <!-- 🎵 Audio y Recursos -->
+    <a-assets timeout="30000">
       <audio id="doomMusic" src="assets/at-dooms-gate.mp3" preload="auto"></audio>
       <a-sound src="#doomMusic" autoplay="true" loop="true" position="0 2 0"></a-sound>
 
-      <!-- Texturas de Doom -->
       <img id="wallTexture" src="assets/doom_wall.png">
       <img id="floorTexture" src="assets/doom_floor.jpg">
       <img id="ceilingTexture" src="assets/doom_ceiling.jpg">
       <img id="keyTexture" src="assets/Key.jpg">
-      <a-asset-item id="marineModel" src="\assets\doom_voxel_marines\scene.gltf"></a-asset-item>
+
+      <a-asset-item id="marineModel" src="assets/doom_voxel_marines/scene.gltf"></a-asset-item>
       <a-asset-item id="demonModel" src="assets/doom_cacodemon.glb"></a-asset-item>
       <a-asset-item id="computerModel" src="assets/computer/scene.gltf"></a-asset-item>
     </a-assets>
 
-    <!-- Texto inicial -->
-    <a-text value="Busca la targeta roja para avanzar." color="red" position="0 3 -5" align="center" width="6"></a-text>
+    <!-- 💡 Iluminación -->
+    <a-light type="ambient" color="#cccccc"></a-light>
+    <a-light type="directional" intensity="0.6" position="1 3 2"></a-light>
 
-    <!-- Suelo -->
-    <a-plane src="#floorTexture" rotation="-90 0 0" width="40" height="40" repeat="10 10"></a-plane>
+    <!-- 🧱 Suelo y Techo -->
+    <a-plane src="#floorTexture" rotation="-90 0 0" width="40" height="40" repeat="10 10" static-body></a-plane>
+    <a-plane src="#ceilingTexture" rotation="90 0 0" position="0 4 0" width="40" height="40" static-body></a-plane>
 
-    <!-- Techo -->
-    <a-plane src="#ceilingTexture" rotation="90 0 0" position="0 4 0" width="40" height="40"></a-plane>
-
-    <!-- Paredes externas del laberinto -->
-    <a-box position="0 2 -20" depth="0.1" height="4" width="40" src="#wallTexture" static-body></a-box>
-    <a-box position="0 2 20" depth="0.1" height="4" width="40" src="#wallTexture" static-body></a-box>
+    <!-- 🧱 Muros del laberinto -->
+    <a-box position="0 2 -20" width="40" height="4" depth="0.1" src="#wallTexture" static-body></a-box>
+    <a-box position="0 2 20" width="40" height="4" depth="0.1" src="#wallTexture" static-body></a-box>
     <a-box position="-20 2 0" width="0.1" height="4" depth="40" src="#wallTexture" static-body></a-box>
     <a-box position="20 2 0" width="0.1" height="4" depth="40" src="#wallTexture" static-body></a-box>
 
-    <!-- Laberinto interno -->
-    <a-box position="-10 2 -15" depth="0.1" height="4" width="10" src="#wallTexture" static-body></a-box>
-    <a-box position="10 2 -15" depth="0.1" height="4" width="10" src="#wallTexture" static-body></a-box>
+    <!-- 🌀 Laberinto interior -->
+    <a-box position="-10 2 -15" width="10" height="4" depth="0.1" src="#wallTexture" static-body></a-box>
+    <a-box position="10 2 -15" width="10" height="4" depth="0.1" src="#wallTexture" static-body></a-box>
     <a-box position="0 2 -10" width="0.1" height="4" depth="20" src="#wallTexture" static-body></a-box>
     <a-box position="5 2 -5" width="10" height="4" depth="0.1" src="#wallTexture" static-body></a-box>
     <a-box position="-5 2 0" width="0.1" height="4" depth="10" src="#wallTexture" static-body></a-box>
-    <a-box position="10 2 5" depth="0.1" height="4" width="10" src="#wallTexture" static-body></a-box>
-    <a-box position="-10 2 10" depth="0.1" height="4" width="10" src="#wallTexture" static-body></a-box>
+    <a-box position="10 2 5" width="10" height="4" depth="0.1" src="#wallTexture" static-body></a-box>
+    <a-box position="-10 2 10" width="10" height="4" depth="0.1" src="#wallTexture" static-body></a-box>
     <a-box position="0 2 15" width="0.1" height="4" depth="20" src="#wallTexture" static-body></a-box>
 
-    <!-- Pared con sangre -->
-    <a-box position="-15 2 -10" depth="0.1" height="4" width="10" src="#WallTexture" static-body></a-box>
-
-    <!-- Tarjeta roja escondida -->
+    <!-- 🔑 Tarjeta roja escondida -->
     <a-plane id="redCard" position="-15 1.5 -9.9" rotation="0 0 0" width="0.5" height="0.5" src="#keyTexture" reveal-door></a-plane>
 
-    <!-- Marines -->
+    <!-- 🪖 Marines y demonios -->
     <a-entity gltf-model="#marineModel" position="5 0 -5" scale="0.5 0.5 0.5"></a-entity>
     <a-entity gltf-model="#marineModel" position="-5 0 -10" scale="0.5 0.5 0.5"></a-entity>
-
-    <!-- Demonios -->
     <a-entity gltf-model="#demonModel" position="10 0 10" scale="0.5 0.5 0.5"></a-entity>
     <a-entity gltf-model="#demonModel" position="-10 0 5" scale="0.5 0.5 0.5"></a-entity>
 
-    <!-- Ordenador oculto -->
+    <!-- 💻 Ordenador oculto (salida) -->
     <a-entity id="computer" gltf-model="#computerModel" position="0 0 18" scale="0.5 0.5 0.5" visible="false"></a-entity>
 
-    <!-- Puerta invisible (ordenador) -->
+    <!-- 🟦 Puerta de salida (invisible) -->
     <a-box id="exitDoor" position="0 2 19.9" width="1" height="4" depth="0.1"
            material="opacity: 0; transparent: true" visible="false" onclick="checkQuestion()"></a-box>
 
-    <!-- Cámara con movimiento estilo Doom -->
+    <!-- 🎮 Cámara con movimiento estilo Doom -->
     <a-entity id="rig" movement-controls position="0 0 0">
       <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
     </a-entity>
+
+    <!-- 🧾 Texto inicial -->
+    <a-text value="Busca la targeta roja para avanzar." color="red" position="0 3 -5" align="center" width="6"></a-text>
   </a-scene>
 
+  <!-- Pregunta final -->
   <script>
     function checkQuestion() {
       let resposta = prompt("¿Cuál es el nombre del primer nivel del Doom clásico de 1993? (Usa el formato 'E1M1')");
       if (resposta === "E1M1") {
-        alert("Correcto! Has avançado al següent món!");
+        alert("¡Correcto! Has avançado al següent món!");
         window.location.href = "mundo3/mon3.html";
       } else {
         alert("Incorrecto. Intenta de nuevo.");
