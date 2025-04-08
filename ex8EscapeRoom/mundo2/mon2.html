@@ -17,7 +17,8 @@
     AFRAME.registerComponent("reveal-door", {
       init: function () {
         this.el.addEventListener("click", () => {
-          alert("💻 Has activado el terminal. La salida está visible.");
+          // Muestra un mensaje y revela la puerta
+          alert("💻 El ordenador (puerta) ahora está al descubierto.");
           document.querySelector("#exitDoor").setAttribute("visible", "true");
         });
       }
@@ -66,7 +67,7 @@
     <a-box position="0 2 15" width="0.1" height="4" depth="20" src="#wallTexture" static-body></a-box>
 
     <!-- 🔑 Tarjeta roja escondida -->
-    <a-plane id="redCard" position="-15 1.5 -9.9" rotation="0 0 0" width="0.5" height="0.5" src="#keyTexture" reveal-door></a-plane>
+    <a-plane id="redCard" position="-14.9 1.5 -10" rotation="0 90 0" width="0.5" height="0.5" src="#keyTexture" reveal-door></a-plane>
 
     <!-- 🪖 Marines y demonios -->
     <a-entity gltf-model="#marineModel" position="5 0 -5" scale="0.5 0.5 0.5"></a-entity>
