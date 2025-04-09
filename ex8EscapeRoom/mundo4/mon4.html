@@ -36,15 +36,33 @@
       <img id="cardTexture" src="assets/Card.jpeg">
       <!-- Añadir el modelo 3D de la cámara -->
       <a-asset-item id="cameraModel" src="assets/camera/scene.gltf"></a-asset-item>
+      <!-- Añadir la imagen del techo -->
+      <img id="ceilingTexture" src="assets/metal_ceiling.jpg">
     </a-assets>
+
+    <!-- Techo como cielo -->
+    <a-sky src="#ceilingTexture"></a-sky>
 
     <!-- Sòl -->
     <a-plane src="#floorTexture" rotation="-90 0 0" width="30" height="30" repeat="5 5"></a-plane>
 
-    <!-- Pareds (passadissos del complex militar) -->
-    <a-box position="0 1 -5" width="20" height="2" depth="0.1" src="#wallTexture"></a-box>
-    <a-box position="10 1 0" depth="20" height="2" width="0.1" src="#wallTexture"></a-box>
-    <a-box position="-10 1 0" depth="20" height="2" width="0.1" src="#wallTexture"></a-box>
+    <!-- Techo -->
+    <a-plane src="#ceilingTexture" rotation="-90 0 0" position="0 5 0" width="30" height="30"></a-plane>
+
+    <!-- Techo que cubre todo el laberinto -->
+    <a-plane src="#ceilingTexture" rotation="-90 0 0" position="0 10 0" width="50" height="50"></a-plane>
+
+    <!-- Pareds (laberinto) -->
+    <a-box position="0 2.5 -5" width="20" height="5" depth="0.1" src="#wallTexture"></a-box>
+    <a-box position="10 2.5 0" depth="20" height="5" width="0.1" src="#wallTexture"></a-box>
+    <a-box position="-10 2.5 0" depth="20" height="5" width="0.1" src="#wallTexture"></a-box>
+    <a-box position="0 2.5 5" width="20" height="5" depth="0.1" src="#wallTexture"></a-box>
+
+    <!-- Paredes internas del laberinto -->
+    <a-box position="5 2.5 -2.5" width="10" height="5" depth="0.1" src="#wallTexture"></a-box>
+    <a-box position="-5 2.5 2.5" width="10" height="5" depth="0.1" src="#wallTexture"></a-box>
+    <a-box position="0 2.5 0" depth="10" height="5" width="0.1" src="#wallTexture"></a-box>
+    <a-box position="2.5 2.5 -2.5" depth="5" height="5" width="0.1" src="#wallTexture"></a-box>
 
     <!-- Zona d'alarma (detector) -->
     <a-box position="2 0.1 -2" width="3" height="0.2" depth="3" color="red" trigger-alarm opacity="0.2"></a-box>
