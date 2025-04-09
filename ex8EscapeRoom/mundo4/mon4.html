@@ -26,12 +26,16 @@
   <a-scene>
     <a-assets>
       <!-- Música d'ambient -->
-      <audio id="metalGearMusic" src="assets/EncounterTheme.mp3" preload="auto"></audio>
+      <audio id="metalGearMusic" src="assets/Intruder 3.mp3" preload="auto"></audio>
       <a-sound src="#metalGearMusic" autoplay="true" loop="true" position="0 2 0"></a-sound>
 
       <!-- Textures -->
-      <img id="wallTexture" src="assets/metal_wall.jpg">
+      <img id="wallTexture" src="assets/metal_wall.png">
       <img id="floorTexture" src="assets/metal_floor.jpg">
+      <!-- Añadir la imagen de la tarjeta -->
+      <img id="cardTexture" src="assets/Card.jpeg">
+      <!-- Añadir el modelo 3D de la cámara -->
+      <a-asset-item id="cameraModel" src="assets/camera/scene.gltf"></a-asset-item>
     </a-assets>
 
     <!-- Sòl -->
@@ -46,11 +50,12 @@
     <a-box position="2 0.1 -2" width="3" height="0.2" depth="3" color="red" trigger-alarm opacity="0.2"></a-box>
 
     <!-- Càmera de seguretat (simulada) -->
-    <a-sphere position="2 2 -2" radius="0.2" color="black" show-hint></a-sphere>
+    <a-entity position="2 2 -2" scale="0.5 0.5 0.5" rotation="0 180 0" 
+              gltf-model="#cameraModel" show-hint></a-entity>
 
     <!-- Targeta d'accés amagada -->
     <a-box id="keyCard" position="1.5 0.5 -3" width="0.3" height="0.2" depth="0.05" 
-           color="#00ccff" show-hint></a-box>
+           src="#cardTexture" show-hint></a-box>
 
     <!-- Porta invisible amb pregunta -->
     <a-box id="exitDoor" position="0 1 5" width="1" height="2" depth="0.1"
