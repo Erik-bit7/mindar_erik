@@ -7,49 +7,69 @@
     <title>RetroEscapeRoom</title>
 </head>
 <body>
-    <style>
+    <style id="theme-style">
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
         body {
             font-family: 'Press Start 2P', cursive;
-            background: url('retro_background.jpg') no-repeat center center fixed;
-            background-size: cover;
-            text-align: center;
-            color: #ff0000;
+            background: #1a1a1a; /* Fondo oscuro */
+            color: #ff9900; /* Naranja brillante estilo Pip-Boy New Vegas */
             margin: 0;
             padding: 0;
+            text-align: center;
         }
         .container {
             max-width: 900px;
             margin: 100px auto;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(26, 26, 26, 0.9); /* Fondo translúcido oscuro */
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(99, 95, 95, 0.5);
+            box-shadow: 0 0 20px rgba(255, 153, 0, 0.5); /* Brillo naranja */
         }
         h1 {
             font-size: 2.5em;
-            color: #ffcc00;
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+            color: #ff9900; /* Naranja brillante */
+            text-shadow: 0 0 10px #ff9900; /* Efecto de brillo */
         }
         p {
             font-size: 1.2em;
             line-height: 1.5;
+            color: #ff9900; /* Naranja brillante */
         }
         .start-button, .link-button {
             display: inline-block;
             padding: 15px 30px;
             margin-top: 20px;
             font-size: 1.5em;
-            color: #000;
-            background: #ffcc00;
-            border: 3px solid #021af6;
+            color: #1a1a1a; /* Texto oscuro */
+            background: #ff9900; /* Fondo naranja brillante */
+            border: 3px solid #ff9900; /* Borde naranja */
             cursor: pointer;
             border-radius: 5px;
             text-decoration: none;
             transition: 0.3s;
         }
         .start-button:hover, .link-button:hover {
-            background: #ffaa00;
+            background: #cc7a00; /* Naranja oscuro al pasar el mouse */
+            color: #ffcc66; /* Texto amarillo brillante */
+        }
+        .start-button:active, .link-button:active {
+            background: #b36b00; /* Naranja más oscuro al hacer clic */
+        }
+        .theme-toggle {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #1a1a1a;
+            background: #00ff40; /* Verde brillante */
+            border: 3px solid #00ff40;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .theme-toggle:hover {
+            background: #007f20; /* Verde oscuro */
+            color: #00ff40;
         }
     </style>
 
@@ -61,8 +81,153 @@
         <button class="start-button" question="72" onclick="iniciarJoc()">Iniciar Missió</button>
         <!-- Aquí está el enlace con estilo de botón -->
         <a href="RetroEscapeRoom.txt" class="link-button" title="Haz clic para ver el archivo del juego">De què va el joc?</a>
+        <br>
+        <!-- Botón para cambiar el tema -->
+        <button class="theme-toggle" onclick="toggleTheme()">Cambiar Tema</button>
     </div>
 
-    
+    <script>
+        let isOrangeTheme = true; // Variable para rastrear el tema actual
+
+        function toggleTheme() {
+            const themeStyle = document.getElementById('theme-style');
+            if (isOrangeTheme) {
+                // Cambiar al tema verde (Pip-Boy clásico)
+                themeStyle.innerHTML = `
+                    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+                    body {
+                        font-family: 'Press Start 2P', cursive;
+                        background: #002b36; /* Fondo oscuro estilo Pip-Boy clásico */
+                        color: #00ff40; /* Verde brillante */
+                        margin: 0;
+                        padding: 0;
+                        text-align: center;
+                    }
+                    .container {
+                        max-width: 900px;
+                        margin: 100px auto;
+                        background: rgba(0, 43, 54, 0.9); /* Fondo translúcido oscuro */
+                        padding: 30px;
+                        border-radius: 10px;
+                        box-shadow: 0 0 20px rgba(0, 255, 64, 0.5); /* Brillo verde */
+                    }
+                    h1 {
+                        font-size: 2.5em;
+                        color: #00ff40; /* Verde brillante */
+                        text-shadow: 0 0 10px #00ff40; /* Efecto de brillo */
+                    }
+                    p {
+                        font-size: 1.2em;
+                        line-height: 1.5;
+                        color: #00ff40; /* Verde brillante */
+                    }
+                    .start-button, .link-button {
+                        display: inline-block;
+                        padding: 15px 30px;
+                        margin-top: 20px;
+                        font-size: 1.5em;
+                        color: #002b36; /* Texto oscuro */
+                        background: #00ff40; /* Fondo verde brillante */
+                        border: 3px solid #00ff40; /* Borde verde */
+                        cursor: pointer;
+                        border-radius: 5px;
+                        text-decoration: none;
+                        transition: 0.3s;
+                    }
+                    .start-button:hover, .link-button:hover {
+                        background: #007f20; /* Verde oscuro al pasar el mouse */
+                        color: #00ff40; /* Texto verde brillante */
+                    }
+                    .start-button:active, .link-button:active {
+                        background: #005f15; /* Verde más oscuro al hacer clic */
+                    }
+                    .theme-toggle {
+                        margin-top: 20px;
+                        padding: 10px 20px;
+                        font-size: 1em;
+                        color: #002b36;
+                        background: #ff9900; /* Naranja brillante */
+                        border: 3px solid #ff9900;
+                        cursor: pointer;
+                        border-radius: 5px;
+                        text-decoration: none;
+                        transition: 0.3s;
+                    }
+                    .theme-toggle:hover {
+                        background: #cc7a00; /* Naranja oscuro */
+                        color: #ffcc66;
+                    }
+                `;
+            } else {
+                // Cambiar al tema naranja (Pip-Boy New Vegas)
+                themeStyle.innerHTML = `
+                    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+                    body {
+                        font-family: 'Press Start 2P', cursive;
+                        background: #1a1a1a; /* Fondo oscuro */
+                        color: #ff9900; /* Naranja brillante estilo Pip-Boy New Vegas */
+                        margin: 0;
+                        padding: 0;
+                        text-align: center;
+                    }
+                    .container {
+                        max-width: 900px;
+                        margin: 100px auto;
+                        background: rgba(26, 26, 26, 0.9); /* Fondo translúcido oscuro */
+                        padding: 30px;
+                        border-radius: 10px;
+                        box-shadow: 0 0 20px rgba(255, 153, 0, 0.5); /* Brillo naranja */
+                    }
+                    h1 {
+                        font-size: 2.5em;
+                        color: #ff9900; /* Naranja brillante */
+                        text-shadow: 0 0 10px #ff9900; /* Efecto de brillo */
+                    }
+                    p {
+                        font-size: 1.2em;
+                        line-height: 1.5;
+                        color: #ff9900; /* Naranja brillante */
+                    }
+                    .start-button, .link-button {
+                        display: inline-block;
+                        padding: 15px 30px;
+                        margin-top: 20px;
+                        font-size: 1.5em;
+                        color: #1a1a1a; /* Texto oscuro */
+                        background: #ff9900; /* Fondo naranja brillante */
+                        border: 3px solid #ff9900; /* Borde naranja */
+                        cursor: pointer;
+                        border-radius: 5px;
+                        text-decoration: none;
+                        transition: 0.3s;
+                    }
+                    .start-button:hover, .link-button:hover {
+                        background: #cc7a00; /* Naranja oscuro al pasar el mouse */
+                        color: #ffcc66; /* Texto amarillo brillante */
+                    }
+                    .start-button:active, .link-button:active {
+                        background: #b36b00; /* Naranja más oscuro al hacer clic */
+                    }
+                    .theme-toggle {
+                        margin-top: 20px;
+                        padding: 10px 20px;
+                        font-size: 1em;
+                        color: #1a1a1a;
+                        background: #00ff40; /* Verde brillante */
+                        border: 3px solid #00ff40;
+                        cursor: pointer;
+                        border-radius: 5px;
+                        text-decoration: none;
+                        transition: 0.3s;
+                    }
+                    .theme-toggle:hover {
+                        background: #007f20; /* Verde oscuro */
+                        color: #00ff40;
+                    }
+                `;
+            }
+            isOrangeTheme = !isOrangeTheme; // Alternar el estado del tema
+        }
+    </script>
 </body>
 </html>
