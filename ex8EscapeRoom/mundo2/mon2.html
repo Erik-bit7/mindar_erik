@@ -49,7 +49,7 @@
 
     <!-- 🧱 Suelo y Techo -->
     <a-plane src="#floorTexture" rotation="-90 0 0" width="40" height="40" repeat="10 10" static-body></a-plane>
-    <a-plane src="#ceilingTexture" rotation="90 0 0" position="0 4 0" width="80" height="80" static-body></a-plane>
+    <a-plane src="#ceilingTexture" rotation="90 0 0" position="0 4 0" width="100" height="100" static-body></a-plane>
 
     <!-- 🧱 Muros del laberinto -->
     <a-box position="0 2 -20" width="40" height="4" depth="0.1" src="#wallTexture" static-body></a-box>
@@ -76,8 +76,8 @@
     <!-- 🪖 Marines y demonios -->
     <a-entity gltf-model="#marineModel" position="5 0 -5" scale="0.5 0.5 0.5"></a-entity>
     <a-entity gltf-model="#marineModel" position="-5 0 -10" scale="0.5 0.5 0.5"></a-entity>
-    <a-entity gltf-model="#demonModel" position="10 0 10" scale="0.1 0.1 0.1"></a-entity>
-    <a-entity gltf-model="#demonModel" position="-10 0 5" scale="0.1 0.1 0.1"></a-entity>
+    <a-entity gltf-model="" position="10 0 10" scale="0.1 0.1 0.1"></a-entity>
+    <a-entity gltf-model="" position="-10 0 5" scale="0.1 0.1 0.1"></a-entity>
 
     <!-- 💻 Ordenador oculto (salida) -->
     <a-entity id="computer" gltf-model="#computerModel" position="0 0 18" scale="0.5 0.5 0.5" visible="false"></a-entity>
