@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="https://castelletm12b.cat/build/assets/question.js" defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RetroEscapeRoom</title>
+</head>
+<body>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
         body {
@@ -11,7 +14,7 @@
             background: url('retro_background.jpg') no-repeat center center fixed;
             background-size: cover;
             text-align: center;
-            color: #fff;
+            color: #ff0000;
             margin: 0;
             padding: 0;
         }
@@ -21,7 +24,7 @@
             background: rgba(0, 0, 0, 0.8);
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 20px rgba(99, 95, 95, 0.5);
         }
         h1 {
             font-size: 2.5em;
@@ -39,7 +42,7 @@
             font-size: 1.5em;
             color: #000;
             background: #ffcc00;
-            border: 3px solid #fff;
+            border: 3px solid #021af6;
             cursor: pointer;
             border-radius: 5px;
             text-decoration: none;
@@ -49,30 +52,17 @@
             background: #ffaa00;
         }
     </style>
-</head>
-<body>
+
     <div class="container">
         <h1>Retro Escape Room</h1>
         <p>Un error en el temps ha fusionat diferents mons de videojocs clàssics en una sola realitat caòtica. Ets l'únic que pot restaurar l'ordre!</p>
         <p>Has de viatjar a través de mons mítics com Super Mario, Doom, Sonic i Metal Gear per trobar les peces del rellotge quàntic i reparar la línia temporal.</p>
         <p>Per accedir al joc, primer has de demostrar que estàs preparat per l'aventura!</p>
-        <button class="start-button" onclick="iniciarJoc()">Iniciar Missió</button>
+        <button class="start-button" question="72" onclick="iniciarJoc()">Iniciar Missió</button>
         <!-- Aquí está el enlace con estilo de botón -->
         <a href="RetroEscapeRoom.txt" class="link-button" title="Haz clic para ver el archivo del juego">De què va el joc?</a>
     </div>
 
-    <script>
-        function iniciarJoc() {
-            // Pregunta al usuario el año de lanzamiento del primer Super Mario Bros
-            let resposta = prompt("En quin any es va llançar el primer joc de Super Mario Bros?");
-            if (resposta && resposta.trim() === "1985") {
-                // Redirige al archivo mon1.html si la respuesta es correcta
-                window.location.href = "mundo1/mon1.html";
-            } else {
-                // Muestra un mensaje de error si la respuesta es incorrecta
-                alert("Resposta incorrecta! Torna-ho a intentar.");
-            }
-        }
-    </script>
+    
 </body>
 </html>
