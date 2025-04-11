@@ -3,6 +3,7 @@
 <head>
   <title>Mon3</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://castelletm12b.cat/build/assets/question.js" defer></script>
 </head>
 <body>
   <!-- Música de fondo fuera de <a-scene> -->
@@ -34,7 +35,7 @@
     <a-text id="question" value="¿Como se llaman el controlador de las gemas?" position="1 1 -9" color="red" scale="2 2 2" visible="false"></a-text>
 
     <!-- Salida (inicialmente oculta) -->
-    <a-box id="exitDoor" position="0 0 -9" width="2" height="2" depth="2" visible="false"
+    <a-box question="71" id="exitDoor" position="0 0 -9" width="2" height="2" depth="2" visible="false"
            material="src: assets/Item.jpg; repeat: 1 1" onclick="goToNextLevel()"></a-box>
 
     <!-- Cámara al nivel del suelo -->
@@ -56,16 +57,6 @@
       exitDoor.setAttribute("visible", "true");
     }
 
-    // Función para avanzar al siguiente nivel
-    function goToNextLevel() {
-      const answer = prompt("¿Como se llaman el controlador de las gemas?");
-      if (answer && answer.toLowerCase() === "Master Emerald") {
-        alert("¡Correcto! Has avanzado al siguiente nivel.");
-        window.location.href = "/ex8EscapeRoom/mundo4/mon4.html"; 
-      } else {
-        alert("Respuesta incorrecta. Inténtalo de nuevo.");
-      }
-    }
   </script>
 </body>
 </html>

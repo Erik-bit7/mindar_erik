@@ -4,6 +4,7 @@
   <title>Mon2 - Doom Laberinto</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/supermedium/aframe-physics-system@4.0.1/dist/aframe-physics-system.min.js"></script>
+  <script src="https://castelletm12b.cat/build/assets/question.js" defer></script>
 
   <script>
     AFRAME.registerComponent("show-hint", {
@@ -82,7 +83,7 @@
     <a-entity id="computer" gltf-model="#computerModel" position="0 0 18" scale="0.5 0.5 0.5" visible="false"></a-entity>
 
     <!-- 🟦 Puerta de salida (invisible) -->
-    <a-box id="exitDoor" position="0 2 19.9" width="1" height="4" depth="0.1"
+    <a-box question="69" id="exitDoor" position="0 2 19.9" width="1" height="4" depth="0.1"
            material="opacity: 0; transparent: true" visible="false" onclick="checkQuestion()"></a-box>
 
     <!-- 🎮 Cámara con movimiento estilo Doom -->
@@ -94,17 +95,6 @@
     <a-text value="Busca la targeta roja para avanzar." color="red" position="0 3 -5" align="center" width="6"></a-text>
   </a-scene>
 
-  <!-- Pregunta final -->
-  <script>
-    function checkQuestion() {
-      let resposta = prompt("¿Cuál es el nombre del primer nivel del Doom clásico de 1993?");
-      if (resposta === "E1M1") {
-        alert("¡Correcto! Has avançado al següent món!");
-        window.location.href = "/ex8EscapeRoom/mundo3/mon3.html";
-      } else {
-        alert("Incorrecto. Intenta de nuevo.");
-      }
-    }
-  </script>
+  
 </body>
 </html>
