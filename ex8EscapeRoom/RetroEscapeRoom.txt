@@ -61,3 +61,17 @@ Porta | Pregunta | Resposta correcta
 5 | Els Doom originals son 3D? | No
 
 ⚠ La porta 5 apareix només si s’han recollit tots els objectes clau dels quatre mons.
+
+Pagina Final:
+
+Nom de la pàgina: PaginaFinal.html
+
+Condició d'accés: S'activa després de respondre correctament la cinquena pregunta i haver recollit tots els objectes clau.
+
+Estètica: Estil retro fidel al disseny original, amb colors verds brillants i ambient de celebració.
+
+Missatge final: "Has recuperat totes les peces del rellotge quàntic i restaurat la línia temporal."
+
+Interactivitat: Botó per tornar a la pàgina d’inici (index.html).
+
+Música (opcional): Pots afegir una música de victòria retro si vols.
