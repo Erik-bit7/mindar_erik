@@ -3,6 +3,7 @@
 <head>
   <title>Mon4 - Metal Gear Laberinto</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://castelletm12b.cat/build/assets/question.js" defer></script>
   <script>
     AFRAME.registerComponent("trigger-alarm", {
       init: function () {
@@ -74,7 +75,7 @@
     <a-box id="keyCard" position="-14 0.6 -16" width="0.3" height="0.2" depth="0.05" src="#cardTexture" show-hint></a-box>
 
     <!-- Porta de sortida -->
-    <a-box id="exitDoor" position="0 1 29.9" width="1" height="2" depth="0.1"
+    <a-box question="81" id="exitDoor" position="0 1 29.9" width="1" height="2" depth="0.1"
            material="opacity: 0; transparent: true" onclick="checkQuestion()"></a-box>
 
     <!-- Càmera i moviment 3D -->
@@ -83,16 +84,5 @@
     </a-entity>
   </a-scene>
 
-  <script>
-    function checkQuestion() {
-      let resposta = prompt("¿Cómo se llama el protagonista de Metal Gear Solid? (Nombre y apellido, primera letra mayúscula)");
-      if (resposta === "Solid Snake") {
-        alert("Correcto! Has completado la missió!");
-        window.location.href = "final.html";
-      } else {
-        alert("Incorrecto. Intenta de nuevo.");
-      }
-    }
-  </script>
 </body>
 </html>
