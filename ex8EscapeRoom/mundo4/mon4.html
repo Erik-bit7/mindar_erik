@@ -35,6 +35,9 @@
 <body>
   <a-scene>
     <a-assets>
+      <a-entity camera look-controls wasd-controls position="0 1.6 0">
+        <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02" material="color: red; shader: flat"></a-entity>
+      </a-entity>
       <audio id="metalGearMusic" src="assets/Intruder 3.mp3" preload="auto"></audio>
       <a-sound src="#metalGearMusic" autoplay="true" loop="true" position="0 2 0"></a-sound>
 
