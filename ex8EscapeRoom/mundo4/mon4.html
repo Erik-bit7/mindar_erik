@@ -22,6 +22,17 @@
       }
     });
   </script>
+  <script>
+    AFRAME.registerComponent("reveal-console", {
+        init: function () {
+            this.el.addEventListener("click", () => {
+                // Mostrar la consola de salida
+                alert("💻 Has trobat la targeta d'accés! La consola està disponible.");
+                document.querySelector("#console").setAttribute("visible", "true");
+            });
+        }
+    });
+  </script>
 </head>
 <body>
   <a-scene>
@@ -34,6 +45,7 @@
       <img id="ceilingTexture" src="assets/metal_ceiling.jpg">
       <img id="cardTexture" src="assets/Card.jpeg">
       <a-asset-item id="cameraModel" src="assets/camera/scene.gltf"></a-asset-item>
+      <a-asset-item id="consoleModel" src="assets/console/scene.gltf"></a-asset-item>
     </a-assets>
 
     <a-light type="ambient" color="#888"></a-light>
@@ -72,7 +84,10 @@
     <a-box position="9 0.5 14" width="1" height="1" depth="1" color="#333"></a-box>
 
     <!-- Targeta d'accés amagada darrere d'una caixa -->
-    <a-box id="keyCard" position="-14 0.6 -16" width="0.3" height="0.2" depth="0.05" src="#cardTexture" show-hint></a-box>
+    <a-box id="keyCard" position="-14 0.6 -16" width="0.3" height="0.2" depth="0.05" src="#cardTexture" reveal-console></a-box>
+
+    <!-- 💻 Ordenador oculto (salida) -->
+    <a-entity id="console" gltf-model="#consoleModel" position="0 0 18" scale="0.5 0.5 0.5" visible="false"></a-entity>
 
     <!-- Porta de sortida -->
     <a-box question="81" id="exitDoor" position="0 1 29.9" width="1" height="2" depth="0.1"

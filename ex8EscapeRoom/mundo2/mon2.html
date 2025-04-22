@@ -69,9 +69,7 @@
 
     <!-- 🩸 Pared con sangre -->
     <a-box position="-15 2 -10" depth="0.1" height="4" width="10" src="#wallTexture" static-body></a-box>
-
-    <!-- 🔑 Tarjeta roja escondida -->
-    <a-plane id="redCard" position="-14.9 1.5 -10" rotation="0 90 0" width="0.5" height="0.5" src="#keyTexture" reveal-door class="clickable"></a-plane>
+    
 
     <!-- 🪖 Marines y demonios -->
     <a-entity gltf-model="#marineModel" position="5 0 -5" scale="0.5 0.5 0.5"></a-entity>
@@ -79,12 +77,15 @@
     <a-entity gltf-model="" position="10 0 10" scale="0.1 0.1 0.1"></a-entity>
     <a-entity gltf-model="" position="-10 0 5" scale="0.1 0.1 0.1"></a-entity>
 
-    <!-- 💻 Ordenador oculto (salida) -->
-    <a-entity id="computer" gltf-model="#computerModel" position="0 0 18" scale="0.5 0.5 0.5" visible="false"></a-entity>
+    <!-- 🔑 Tarjeta roja escondida -->
+<a-plane id="redCard" position="-9.9 1.5 0" rotation="0 90 0" width="0.5" height="0.5" src="#keyTexture" reveal-door class="clickable"></a-plane>
 
-    <!-- 🟦 Puerta de salida (invisible) -->
-    <a-box question="69" id="exitDoor" position="0 2 19.9" width="1" height="4" depth="0.1"
-           material="opacity: 0; transparent: true" visible="false" onclick="checkQuestion()"></a-box>
+<!-- 💻 Ordenador visible (salida) -->
+<a-entity id="computer" gltf-model="#computerModel" position="0 0 -18" scale="0.5 0.5 0.5" visible="true"></a-entity>
+
+<!-- 🟦 Puerta de salida (ahora junto al ordenador) -->
+<a-box question="69" id="exitDoor" position="0 2 -16.1" width="1" height="4" depth="0.1"
+       material="opacity: 0; transparent: true" visible="false" onclick="checkQuestion()"></a-box>
 
     <!-- 🎮 Cámara con movimiento estilo Doom -->
     <a-entity id="rig" movement-controls position="0 0 0">
