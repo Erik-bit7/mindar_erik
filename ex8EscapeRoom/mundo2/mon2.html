@@ -7,24 +7,17 @@
   <script src="https://castelletm12b.cat/build/assets/question.js" defer></script>
 
   <script>
-    AFRAME.registerComponent("show-hint", {
-      init: function () {
-        this.el.addEventListener("click", () => {
-          alert("💡 Pista: Busca la targeta roja.");
-        });
-      }
-    });
-
+    
     AFRAME.registerComponent("reveal-door", {
       init: function () {
         this.el.addEventListener("click", () => {
-          // Muestra un mensaje y revela la puerta
-          alert("💻 El ordenador (puerta) ahora está al descubierto.");
-          document.querySelector("#exitDoor").setAttribute("visible", "true");
+          alert("💻 El ordenador ahora está activo.");
+          document.querySelector("#computer").setAttribute("visible", "true");
         });
       }
     });
   </script>
+  
 </head>
 <body>
   <a-scene physics="debug: false" cursor="rayOrigin: mouse">
@@ -78,14 +71,30 @@
     <a-entity gltf-model="" position="-10 0 5" scale="0.1 0.1 0.1"></a-entity>
 
     <!-- 🔑 Tarjeta roja escondida -->
-<a-plane id="redCard" position="-9.9 1.5 0" rotation="0 90 0" width="0.5" height="0.5" src="#keyTexture" reveal-door class="clickable"></a-plane>
+    <a-plane id="redCard"
+    position="-10 1.3 -14.95"
+    rotation="0 0 0"
+    width="0.5" height="0.5"
+    src="#keyTexture"
+    class="clickable"
+    reveal-door>
+    </a-plane>
+
 
 <!-- 💻 Ordenador visible (salida) -->
-<a-entity id="computer" gltf-model="#computerModel" position="0 0 -18" scale="0.5 0.5 0.5" visible="true"></a-entity>
+    <a-entity id="computer"
+          gltf-model="#computerModel"
+          position="0 0 -18"
+          scale="0.5 0.5 0.5"
+          visible="false"
+          class="clickable"
+          onclick="checkQuestion()">
+    </a-entity>
+
 
 <!-- 🟦 Puerta de salida (ahora junto al ordenador) -->
 <a-box question="69" id="exitDoor" position="0 2 -16.1" width="1" height="4" depth="0.1"
-       material="opacity: 0; transparent: true" visible="false" onclick="checkQuestion()"></a-box>
+       material="opacity: 0; transparent: true" visible="false"></a-box>
 
     <!-- 🎮 Cámara con movimiento estilo Doom -->
     <a-entity id="rig" movement-controls position="0 0 0">
