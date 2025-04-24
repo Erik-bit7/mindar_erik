@@ -13,13 +13,10 @@
         });
       }
     });
-    
 
     AFRAME.registerComponent("reveal-console", {
       init: function () {
-        this.el.addEventListener("click", () => {
-          // Mostrar un mensaje y hacer visible la consola
-          alert("💻 Has trobat la targeta d'accés! La consola està disponible.");
+        this.el.addEventListener("click", () => {alert("💻 Has trobat la targeta d'accés! La consola està disponible.");
           document.querySelector("#console").setAttribute("visible", "true");
         });
       }
@@ -28,10 +25,7 @@
 </head>
 <body>
   <a-scene>
-    <a-scene cursor="rayOrigin: mouse">
-      <a-entity camera look-controls wasd-controls position="0 1.6 0">
-        <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02" material="color: red; shader: flat"></a-entity>
-      </a-entity>
+    <a-assets>
       <audio id="metalGearMusic" src="assets/Intruder 3.mp3" preload="auto"></audio>
       <a-sound src="#metalGearMusic" autoplay="true" loop="true" position="0 2 0"></a-sound>
 
@@ -102,7 +96,7 @@
 
     <!-- Cámara y controles -->
     <a-entity id="rig" movement-controls position="0 0 -25">
-      <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
+      <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable" position="0 1.6 0" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02" material="color: red; shader: flat"></a-entity>
     </a-entity>
   </a-scene>
 
