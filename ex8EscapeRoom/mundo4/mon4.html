@@ -16,7 +16,8 @@
 
     AFRAME.registerComponent("reveal-console", {
       init: function () {
-        this.el.addEventListener("click", () => {alert("💻 Has trobat la targeta d'accés! La consola està disponible.");
+        this.el.addEventListener("click", () => {
+          alert("💻 Has trobat la targeta d'accés! La consola està disponible.");
           document.querySelector("#console").setAttribute("visible", "true");
         });
       }
@@ -75,7 +76,7 @@
 <a-box position="1 0.5 0" width="1.5" height="1.5" depth="1.5" color="#777"></a-box>
 <a-entity gltf-model="#cameraModel" position="0.5 3 1.5" rotation="0 90 0" scale="0.5 0.5 0.5"></a-entity>
 <a-plane position="1 0.01 1.5" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
-<a-box id="keyCard" position="1 0 -1.5" width="0.5" height="0.5" depth="0.05" src="#cardTexture" reveal-console></a-box>
+<a-box id="keyCard" position="1 0 -1.5" width="0.5" height="0.5" depth="0.05" src="#cardTexture" class="clickable" reveal-console></a-box>
 
 <!-- Caja 4 -->
 <a-box position="-9 0.5 7.5" width="1.5" height="1.5" depth="1.5" color="#444"></a-box>
@@ -88,15 +89,19 @@
 <a-plane position="9 0.01 14" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
 
     <!-- Consola de salida oculta -->
-    <a-entity id="console" gltf-model="#consoleModel" position="0 0 18" scale="0.5 0.5 0.5" visible="false"></a-entity>
-
-    <!-- Puerta de salida -->
-    <a-box question="81" id="exitDoor" position="0 1 29.9" width="1" height="2" depth="0.1"
-           material="opacity: 0; transparent: true" onclick="checkQuestion()"></a-box>
+    <a-entity id="console" question="81" gltf-model="#consoleModel" position="14 0.01 -13" scale="0.5 0.5 0.5" visible="false" onclick="checkQuestion()"></a-entity>></a-entity>
+    
 
     <!-- Cámara y controles -->
-    <a-entity id="rig" movement-controls position="0 0 -25">
-      <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable" position="0 1.6 0" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02" material="color: red; shader: flat"></a-entity>
+    <a-entity id="rig" movement-controls position="0 0 20">
+      <a-entity camera look-controls wasd-controls position="0 1.6 0">
+        <a-entity cursor="rayOrigin: mouse" 
+                  raycaster="objects: .clickable" 
+                  position="0 0 -1" 
+                  geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02" 
+                  material="color: red; shader: flat">
+        </a-entity>
+      </a-entity>
     </a-entity>
   </a-scene>
 
