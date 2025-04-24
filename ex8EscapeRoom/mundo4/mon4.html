@@ -70,27 +70,34 @@
     <a-box position="0 2.5 36" width="0.1" height="5" depth="24" src="#wallTexture"></a-box>
     <a-box position="-10 2.5 10" width="20" height="5" depth="0.1" src="#wallTexture"></a-box>
     <a-box position="10 2.5 15" width="20" height="5" depth="0.1" src="#wallTexture"></a-box>
-
-    <!-- Cámaras y áreas de vigilancia -->
-    <a-entity gltf-model="#cameraModel" position="-14 3 -14.5 .05" rotation="0 0 0" scale="0.5 0.5 0.5"></a-entity>
-    <a-plane position="-14 0.01 -14.5" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
-
-    <a-entity gltf-model="#cameraModel" position="13 3 -9.5 .05" rotation="0 0 0" scale="0.5 0.5 0.5"></a-entity>
-    <a-plane position="14 0.01 -9.5" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
-
-    <a-entity gltf-model="#cameraModel" position="-10 3 10.5 .05" rotation="0 0 0" scale="0.5 0.5 0.5"></a-entity>
-    <a-plane position="-10 0.01 10.5" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
     
+    <!-- Cajas y camaras -->
 
-    <!-- Cajas -->
-    <a-box position="-14 0.5 -16" width="1" height="1" depth="1" color="#555"></a-box>
-    <a-box position="13 0.5 -9" width="1" height="1" depth="1" color="#666"></a-box>
-    <a-box position="0 0.5 1" width="1" height="1" depth="1" color="#777"></a-box>
-    <a-box position="-9 0.5 9" width="1" height="1" depth="1" color="#444"></a-box>
-    <a-box position="9 0.5 14" width="1" height="1" depth="1" color="#333"></a-box>
+    <!-- Caja 1 -->
+<a-box position="-14 0.5 -17" width="1.5" height="1.5" depth="1.5" color="#555"></a-box>
+<a-entity gltf-model="#cameraModel" position="-14 3 -14.5" rotation="0 0 0" scale="0.5 0.5 0.5"></a-entity>
+<a-plane position="-14 0.01 -14.5" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
 
-    <!-- Tarjeta detrás de la caja -->
-    <a-box id="keyCard" position="-14 0.6 -16.2" width="0.3" height="0.2" depth="0.05" src="#cardTexture" reveal-console></a-box>
+<!-- Caja 2 -->
+<a-box position="13 0.5 -11" width="1.5" height="1.5" depth="1.5" color="#666"></a-box>
+<a-entity gltf-model="#cameraModel" position="13 3 -9.5" rotation="0 0 0" scale="0.5 0.5 0.5"></a-entity>
+<a-plane position="13 0.01 -9.5" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
+
+<!-- Caja 3 -->
+<a-box position="1 0.5 0" width="1.5" height="1.5" depth="1.5" color="#777"></a-box>
+<a-entity gltf-model="#cameraModel" position="0.5 3 1.5" rotation="0 90 0" scale="0.5 0.5 0.5"></a-entity>
+<a-plane position="1 0.01 1.5" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
+<a-box id="keyCard" position="1 1 -1.5" width="0.3" height="0.2" depth="0.05" src="#cardTexture" reveal-console></a-box>
+
+<!-- Caja 4 -->
+<a-box position="-9 0.5 7.5" width="1.5" height="1.5" depth="1.5" color="#444"></a-box>
+<a-entity gltf-model="#cameraModel" position="-9 3.5 9.5" rotation="0 175 0" scale="0.5 0.5 0.5"></a-entity>
+<a-plane position="-9 0.01 9" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
+
+<!-- Caja 5 -->
+<a-box position="9 0.5 12.5" width="1.5" height="1.5" depth="1.5" color="#333"></a-box>
+<a-entity gltf-model="#cameraModel" position="9 3 14" rotation="0 0 0" scale="0.5 0.5 0.5"></a-entity>
+<a-plane position="9 0.01 14" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
 
     <!-- Consola de salida oculta -->
     <a-entity id="console" gltf-model="#consoleModel" position="0 0 18" scale="0.5 0.5 0.5" visible="false"></a-entity>
@@ -100,7 +107,7 @@
            material="opacity: 0; transparent: true" onclick="checkQuestion()"></a-box>
 
     <!-- Cámara y controles -->
-    <a-entity id="rig" movement-controls position="0 0 0">
+    <a-entity id="rig" movement-controls position="0 0 -25">
       <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
     </a-entity>
   </a-scene>
