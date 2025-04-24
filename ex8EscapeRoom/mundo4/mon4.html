@@ -13,18 +13,12 @@
         });
       }
     });
-
-    AFRAME.registerComponent("show-hint", {
-      init: function () {
-        this.el.addEventListener("click", () => {
-          alert("📡 Pista: La targeta d'accés es troba darrere d'una caixa al costat d'una càmera de seguretat.");
-        });
-      }
-    });
+    
 
     AFRAME.registerComponent("reveal-console", {
       init: function () {
         this.el.addEventListener("click", () => {
+          // Mostrar un mensaje y hacer visible la consola
           alert("💻 Has trobat la targeta d'accés! La consola està disponible.");
           document.querySelector("#console").setAttribute("visible", "true");
         });
@@ -34,7 +28,7 @@
 </head>
 <body>
   <a-scene>
-    <a-assets>
+    <a-scene cursor="rayOrigin: mouse">
       <a-entity camera look-controls wasd-controls position="0 1.6 0">
         <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02" material="color: red; shader: flat"></a-entity>
       </a-entity>
@@ -87,7 +81,7 @@
 <a-box position="1 0.5 0" width="1.5" height="1.5" depth="1.5" color="#777"></a-box>
 <a-entity gltf-model="#cameraModel" position="0.5 3 1.5" rotation="0 90 0" scale="0.5 0.5 0.5"></a-entity>
 <a-plane position="1 0.01 1.5" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
-<a-box id="keyCard" position="1 1 -1.5" width="0.3" height="0.2" depth="0.05" src="#cardTexture" reveal-console></a-box>
+<a-box id="keyCard" position="1 0 -1.5" width="0.5" height="0.5" depth="0.05" src="#cardTexture" reveal-console></a-box>
 
 <!-- Caja 4 -->
 <a-box position="-9 0.5 7.5" width="1.5" height="1.5" depth="1.5" color="#444"></a-box>
