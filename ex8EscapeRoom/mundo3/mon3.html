@@ -6,57 +6,82 @@
   <script src="https://castelletm12b.cat/build/assets/question.js" defer></script>
 </head>
 <body>
-  <!-- Música de fondo fuera de <a-scene> -->
+  <!-- 🎵 Música de fondo -->
   <audio autoplay loop>
     <source src="assets/Green-Hill-Zone.mp3" type="audio/mpeg">
   </audio>
 
   <a-scene cursor="rayOrigin: mouse">
+    <!-- 🎮 Cámara y cursor -->
     <a-entity camera look-controls wasd-controls position="0 1.6 0">
-      <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02" material="color: red; shader: flat"></a-entity>
+      <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable" position="0 0 -1"
+                geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                material="color: red; shader: flat"></a-entity>
     </a-entity>
-    <!-- Fondo del mundo -->
+
+    <!-- 🌌 Cielo -->
     <a-sky src="assets/world.jpeg" rotation="0 -90 0"></a-sky>
 
-    <!-- Pista visual -->
+    <!-- 🧾 Texto de pista -->
     <a-text value="Busca las gemas legendarias..." position="1 1 -9" color="blue" scale="2 2 2"></a-text>
 
-    <!-- Rings distribuidos lejos de la cámara y del texto -->
+    <!-- 💍 Anillos -->
     <a-entity gltf-model="assets/sonic_ring/scene.gltf" position="50 10 -50" scale="0.3 0.3 0.3"></a-entity>
     <a-entity gltf-model="assets/sonic_ring/scene.gltf" position="-60 15 -40" scale="0.3 0.3 0.3"></a-entity>
     <a-entity gltf-model="assets/sonic_ring/scene.gltf" position="70 20 60" scale="0.3 0.3 0.3"></a-entity>
     <a-entity gltf-model="assets/sonic_ring/scene.gltf" position="-80 12 70" scale="0.3 0.3 0.3"></a-entity>
     <a-entity gltf-model="assets/sonic_ring/scene.gltf" position="40 18 -90" scale="0.3 0.3 0.3"></a-entity>
 
-    <!-- Ring especial escondido con ChaosEmeralds -->
-    <a-entity gltf-model="assets/sonic_ring/scene.gltf" position="-100 5 -100" scale="0.3 0.3 0.3" onclick="showChaosEmeralds()"></a-entity>
+    <!-- 💫 Ring especial -->
+    <a-entity gltf-model="assets/sonic_ring/scene.gltf"
+              position="-100 5 -100"
+              scale="0.3 0.3 0.3"
+              class="clickable"
+              onclick="showChaosEmeralds()"></a-entity>
 
-    <!-- Imagen de las Chaos Emeralds (inicialmente oculta) -->
+    <!-- 💎 Imagen Chaos Emeralds -->
     <a-plane id="chaosEmeralds" src="assets/ChaosEmeralds.png" position="0 3 -5" width="3" height="2" visible="false"></a-plane>
-  
 
-    <!-- Salida (inicialmente oculta) -->
-    <a-box question="71" id="exitDoor" position="0 0 -9" width="2" height="2" depth="2" visible="false"
-           material="src: assets/Item.jpg; repeat: 1 1" onclick="goToNextLevel()"></a-box>
+    <!-- 🚪 Salida -->
+    <a-box question="71" id="exitDoor" position="0 0 -9" width="2" height="2" depth="2"
+           visible="false" material="src: assets/Item.jpg; repeat: 1 1"
+           class="clickable"
+           onclick="goToNextLevel()"></a-box>
 
-    <!-- Cámara al nivel del suelo -->
+    <!-- 🔙 Botón de retorno -->
+    <a-assets>
+      <img id="returnImg" src="assets/Return.jpg">
+    </a-assets>
+    <a-plane class="clickable" id="backToHome" position="0 3 -8" rotation="0 0 0" width="3" height="1.5"
+             src="#returnImg" material="transparent: true"></a-plane>
+
+    <!-- Extra cámara (innecesaria pero mantenida si hay lógica que la requiera) -->
     <a-camera position="0 1.6 0"></a-camera>
   </a-scene>
 
   <script>
-    // Mostrar las Chaos Emeralds y la salida
+    // Mostrar Chaos Emeralds y la salida
     function showChaosEmeralds() {
       const chaosEmeralds = document.querySelector("#chaosEmeralds");
       const exitDoor = document.querySelector("#exitDoor");
 
       chaosEmeralds.setAttribute("visible", "true");
       alert("¡Has encontrado las Chaos Emeralds!");
-
-      // Mostrar la pregunta y la salida
-      question.setAttribute("visible", "true");
       exitDoor.setAttribute("visible", "true");
     }
 
+    // Redirección al menú principal
+    function goToHome() {
+      window.location.href = "../RetroEscapeRoom.html";
+    }
+
+    // Evento del botón de retorno
+    document.addEventListener("DOMContentLoaded", () => {
+      const returnButton = document.querySelector("#backToHome");
+      if (returnButton) {
+        returnButton.addEventListener("click", goToHome);
+      }
+    });
   </script>
 </body>
 </html>
