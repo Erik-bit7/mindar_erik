@@ -9,7 +9,7 @@
       init: function () {
         this.el.addEventListener("mouseenter", () => {
           alert("🚨 Alarma! Has estat detectat! Torna a començar des del punt inicial.");
-          document.querySelector("#rig").setAttribute("position", "0 0 20");
+          document.querySelector("#rig").setAttribute("position", "0 0 0");
         });
       }
     });
@@ -34,7 +34,7 @@
       <img id="floorTexture" src="assets/metal_floor.jpg">
       <img id="ceilingTexture" src="assets/metal_ceiling.jpg">
       <img id="cardTexture" src="assets/Card.jpeg">
-      <img id="returnImg" src="assets/Return.jpg">
+      
       <a-asset-item id="cameraModel" src="assets/camera/scene.gltf"></a-asset-item>
       <a-asset-item id="consoleModel" src="assets/console/scene.gltf"></a-asset-item>
     </a-assets>
@@ -52,7 +52,7 @@
     <a-box position="-30 2.5 0" width="0.1" height="5" depth="60" src="#wallTexture"></a-box>
     <a-box position="30 2.5 0" width="0.1" height="5" depth="60" src="#wallTexture"></a-box>
 
-    <!-- Paredes internas -->
+    <!-- Paredes internas con huecos -->
     <a-box position="-15 2.5 -15" width="12" height="5" depth="0.1" src="#wallTexture"></a-box>
     <a-box position="-3 2.5 -15" width="12" height="5" depth="0.1" src="#wallTexture"></a-box>
     <a-box position="15 2.5 -10" width="30" height="5" depth="0.1" src="#wallTexture"></a-box>
@@ -60,36 +60,69 @@
     <a-box position="0 2.5 36" width="0.1" height="5" depth="24" src="#wallTexture"></a-box>
     <a-box position="-10 2.5 10" width="20" height="5" depth="0.1" src="#wallTexture"></a-box>
     <a-box position="10 2.5 15" width="20" height="5" depth="0.1" src="#wallTexture"></a-box>
+    
+    <!-- Cajas y camaras -->
 
-    <!-- Cajas con cámaras y sensores -->
-    <!-- (Caja 1 a 5 igual que antes, sin cambios) -->
-    <!-- ... -->
+    <!-- Caja 1 -->
+<a-box position="-14 0.5 -17" width="1.5" height="1.5" depth="1.5" color="#555"></a-box>
+<a-entity gltf-model="#cameraModel" position="-14 3 -14.5" rotation="0 0 0" scale="0.5 0.5 0.5"></a-entity>
+<a-plane position="-14 0.01 -14.5" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
 
-    <!-- Consola de salida -->
+<!-- Caja 2 -->
+<a-box position="13 0.5 -11" width="1.5" height="1.5" depth="1.5" color="#666"></a-box>
+<a-entity gltf-model="#cameraModel" position="13 3 -9.5" rotation="0 0 0" scale="0.5 0.5 0.5"></a-entity>
+<a-plane position="13 0.01 -9.5" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
+
+<!-- Caja 3 -->
+<a-box position="1 0.5 0" width="1.5" height="1.5" depth="1.5" color="#777"></a-box>
+<a-entity gltf-model="#cameraModel" position="0.5 3 1.5" rotation="0 90 0" scale="0.5 0.5 0.5"></a-entity>
+<a-plane position="1 0.01 1.5" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
+<a-box id="keyCard" position="1 0 -1.5" width="0.5" height="0.5" depth="0.05" src="#cardTexture" class="clickable" reveal-console></a-box>
+
+<!-- Caja 4 -->
+<a-box position="-9 0.5 7.5" width="1.5" height="1.5" depth="1.5" color="#444"></a-box>
+<a-entity gltf-model="#cameraModel" position="-9 3.5 9.5" rotation="0 175 0" scale="0.5 0.5 0.5"></a-entity>
+<a-plane position="-9 0.01 9" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
+
+<!-- Caja 5 -->
+<a-box position="9 0.5 12.5" width="1.5" height="1.5" depth="1.5" color="#333"></a-box>
+<a-entity gltf-model="#cameraModel" position="9 3 14" rotation="0 0 0" scale="0.5 0.5 0.5"></a-entity>
+<a-plane position="9 0.01 14" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
+
+    <!-- Consola de salida oculta -->
     <a-entity id="console" question="81" gltf-model="#consoleModel" position="14 0.01 -13" scale="0.5 0.5 0.5" visible="false" onclick="checkQuestion()"></a-entity>
-
-    <!-- Botón de retorno -->
-    <a-plane class="clickable" id="backToHome" position="0 3 -25" width="3" height="1.5"
-             src="#returnImg" material="transparent: true"></a-plane>
+    
 
     <!-- Cámara y controles -->
     <a-entity id="rig" movement-controls position="0 0 20">
       <a-entity camera look-controls wasd-controls position="0 1.6 0">
-        <a-entity cursor="rayOrigin: mouse"
-                  raycaster="objects: .clickable, [id='console']"
-                  position="0 0 -1"
-                  geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+        <a-entity cursor="rayOrigin: mouse" 
+                  raycaster="objects: .clickable, [id='console']" 
+                  position="0 0 -1" 
+                  geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02" 
                   material="color: red; shader: flat">
         </a-entity>
       </a-entity>
     </a-entity>
+
+    <!-- 🔙 Botón de retorno -->
+    <a-assets>
+      <img id="returnImg" src="assets/Return.jpg">
+    </a-assets>
+    <a-plane class="clickable" id="backToHome" position="2 1 29" rotation="0 180 0" width="3" height="1.5"
+             src="#returnImg" material="transparent: true"></a-plane>
+    <a-text value="Boton de retorno." color="red" position="2 2 29" rotation="0 180 0" align="center" width="6"></a-text>
+             
+  </a-scene>
   </a-scene>
 
   <script>
+    // Redirección al nivel anterior
     function goToHome() {
-      window.location.href = "../RetroEscapeRoom.html";
+      window.location.href = "/mundo3/mon3.html";
     }
 
+    // Evento del botón de retorno
     document.addEventListener("DOMContentLoaded", () => {
       const returnButton = document.querySelector("#backToHome");
       if (returnButton) {

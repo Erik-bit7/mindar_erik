@@ -92,15 +92,16 @@
     <a-text value="Busca la targeta roja para avanzar." color="red" position="0 3 -3" align="center" width="6"></a-text>
 
     <!-- 🔙 Botón de retorno -->
-    <a-plane class="clickable" id="backToHome" position="0 3 -18" rotation="0 0 0" width="3" height="1.5"
+    <a-plane class="clickable" id="backToHome" position="-2 1 -19.5" rotation="0 0 0" width="3" height="1.5"
              src="#returnImg" material="transparent: true">
     </a-plane>
+    <a-text value="Boton de retorno." color="red" position="-2 3 -19.5" align="center" width="6"></a-text>
   </a-scene>
 
   <script>
     // Redirección
     function goToHome() {
-      window.location.href = "../RetroEscapeRoom.html";
+      window.location.href = "../mundo1/mon1.html";
     }
 
     // Añadir evento al botón de regreso

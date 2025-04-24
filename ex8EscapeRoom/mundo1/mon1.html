@@ -1,103 +1,112 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Mon1</title>
-  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-  <script src="https://castelletm12b.cat/build/assets/question.js" defer></script>
-  <script>
+ <head>
+    <title>Mon1</title>
+   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+   <script src="https://castelletm12b.cat/build/assets/question.js" defer></script>
+
+   <script>
     AFRAME.registerComponent("show-hint", {
-      init: function () {
+      init: function() {
         this.el.addEventListener("click", () => {
-          alert("Pista: Busca la puerta invisible entre una tubería casi al nivel del suelo y una estrella que está en el suelo");
+          alert("Pista: Busca la puerta invisible entre una tuberia casi al nivel del suelo i una estralla que esta en el suelo");
         });
       }
     });
-  </script>
-</head>
+   </script>
+ </head>
 <body>
-  <a-scene cursor="rayOrigin: mouse">
-    <!-- Cámara principal con cursor -->
-    <a-entity camera look-controls wasd-controls position="0 1.6 0">
-      <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable" position="0 0 -1"
-                geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
-                material="color: red; shader: flat">
+    <a-scene cursor="rayOrigin: mouse">
+      <a-entity camera look-controls wasd-controls position="0 1.6 0">
+        <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable" position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                  material="color: red; shader: flat"></a-entity>
       </a-entity>
-    </a-entity>
+        <a-assets>
+          <!-- Música de fondo -->
+          <audio autoplay loop>
+            <source src="assets/overworld-theme.mp3" type="audio/mpeg">
+          </audio>
 
-    <a-assets>
-      <!-- Modelos -->
-      <a-asset-item id="bloqueOriginal" src="assets/Bloque/scene.gltf"></a-asset-item>
-      <a-asset-item id="bloqueClon" src="assets/block/scene.gltf"></a-asset-item>
-      <img id="sky" src="assets/Mario-world.jpeg">
-      <img id="returnImg" src="assets/Return.jpg">
-    </a-assets>
+          <!-- Modelo del bloque -->
+          <a-asset-item id="blockModel" src="assets/Bloque/scene.gltf"></a-asset-item>
+        </a-assets>
 
-    <!-- Música de fondo -->
-    <a-entity sound="src: url(assets/overworld-theme.mp3); autoplay: true; loop: true"></a-entity>
+        <!-- Fondo del mundo -->
+        <a-sky src="assets/Mario-world.jpeg"></a-sky>
 
-    <!-- Fondo del mundo -->
-    <a-sky src="#sky"></a-sky>
+        <!-- Modelo de bloques clon -->
+        <a-asset-item id="blockModel" src="assets/block/scene.gltf"></a-asset-item>
 
-    <!-- Bloques distribuidos por los límites del mapa -->
-    <a-entity gltf-model="#bloqueClon" position="-20 5 -20" scale="0.01 0.01 0.01"></a-entity>
-    <a-entity gltf-model="#bloqueClon" position="20 5 -20" scale="0.01 0.01 0.01"></a-entity>
-    <a-entity gltf-model="#bloqueClon" position="-20 5 20" scale="0.01 0.01 0.01"></a-entity>
-    <a-entity gltf-model="#bloqueClon" position="0 5 -25" scale="0.01 0.01 0.01"></a-entity>
-    <a-entity gltf-model="#bloqueClon" position="0 5 25" scale="0.01 0.01 0.01"></a-entity>
-    <a-entity gltf-model="#bloqueClon" position="-25 5 0" scale="0.01 0.01 0.01"></a-entity>
-    <a-entity gltf-model="#bloqueClon" position="25 5 0" scale="0.01 0.01 0.01"></a-entity>
+        <!-- Modelo de bloque pista -->
+        <a-asset-item id="bloqueModel" src="assets/Bloque/scene.gltf"></a-asset-item>
 
-    <!-- Bloque con pista -->
-    <a-entity gltf-model="#bloqueOriginal" position="20 2 20" scale="0.01 0.01 0.01" show-hint></a-entity>
+        <!-- Bloques distribuidos por los límites del mapa con tamaño muy pequeño y más altos -->
+        <a-entity gltf-model="#blockModel" position="-20 5 -20" scale="0.01 0.01 0.01"></a-entity>
+        <a-entity gltf-model="#blockModel" position="20 5 -20" scale="0.01 0.01 0.01"></a-entity>
+        <a-entity gltf-model="#blockModel" position="-20 5 20" scale="0.01 0.01 0.01"></a-entity>
+        <a-entity gltf-model="#blockModel" position="0 5 -25" scale="0.01 0.01 0.01"></a-entity>
+        <a-entity gltf-model="#blockModel" position="0 5 25" scale="0.01 0.01 0.01"></a-entity>
+        <a-entity gltf-model="#blockModel" position="-25 5 0" scale="0.01 0.01 0.01"></a-entity>
+        <a-entity gltf-model="#blockModel" position="25 5 0" scale="0.01 0.01 0.01"></a-entity>
 
-    <!-- Puerta invisible -->
-    <a-box question="63" id="exitDoor" position="-2 0.5 -3" width="1" height="1" depth="1"
-           material="opacity: 0; transparent: true"></a-box>
+        <!-- Bloque con la pista más alto -->
+        <a-entity gltf-model="#bloqueModel" position="20 2 20" scale="0.01 0.01 0.01" show-hint></a-entity>
 
-    <!-- Botón de regreso -->
-    <a-plane class="clickable" id="backToHome" position="0 5 -30" rotation="0 180 0"
-             width="5" height="5" src="#returnImg" material="transparent: true">
-    </a-plane>
-  </a-scene>
+        <!-- Porta de sortida invisible -->
+        <a-box question="63" id="exitDoor" position="-2 0.5 -3" width="1" height="1" depth="1" material="opacity: 0; transparent: true"></a-box>
 
-  <script>
-    // Redirección al menú principal
-    function goToHome() {
+        <!-- Salida hacia atrás -->
+        <a-plane id="backToHome" class="clickable" position="2 -2 -5" rotation="0 -20 0" width="2" height="2"
+                 src="assets/Return.jpg" material="transparent: true" onclick="goToHome()">
+        </a-plane>
+        <a-text value="Boton de Volver" color="red" position="2 -0.5 -5" align="center" width="6"></a-text>
+         
+        <!-- Cámara al nivel del suelo -->
+        <a-camera position="0 0.5 0"></a-camera>
+    </a-scene>
+
+    <script>
+      // Temporizador de 60 segundos
+      let timer = 60; // Tiempo inicial en segundos
+      const countdown = setInterval(() => {
+        timer--;
+        if (timer <= 0) {
+          clearInterval(countdown);
+          alert("¡Se acabó el tiempo! Inténtalo de nuevo.");
+          window.location.reload(); // Reinicia el nivel
+        }
+      }, 1000);
+
+      // Mostrar el temporizador en pantalla
+      const timerDisplay = document.createElement("div");
+      timerDisplay.style.position = "absolute";
+      timerDisplay.style.top = "10px";
+      timerDisplay.style.left = "10px";
+      timerDisplay.style.color = "white";
+      timerDisplay.style.fontSize = "24px";
+      timerDisplay.style.fontFamily = "Arial, sans-serif";
+      timerDisplay.innerHTML = `Tiempo restante: ${timer}s`;
+      document.body.appendChild(timerDisplay);
+
+      // Actualizar el temporizador en pantalla
+      setInterval(() => {
+        timerDisplay.innerHTML = `Tiempo restante: ${timer}s`;
+      }, 1000);
+    </script>
+
+    <script>
+     function goToHome() {
       window.location.href = "../RetroEscapeRoom.html";
     }
 
-    // Añadir evento de clic al plano
+    // Añadir evento al botón de regreso
     document.addEventListener("DOMContentLoaded", () => {
       const returnButton = document.querySelector("#backToHome");
       if (returnButton) {
         returnButton.addEventListener("click", goToHome);
       }
     });
-
-    // Temporizador
-    let timer = 60;
-    const timerDisplay = document.createElement("div");
-    timerDisplay.style.position = "absolute";
-    timerDisplay.style.top = "10px";
-    timerDisplay.style.left = "10px";
-    timerDisplay.style.color = "white";
-    timerDisplay.style.fontSize = "24px";
-    timerDisplay.style.fontFamily = "Arial, sans-serif";
-    timerDisplay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-    timerDisplay.style.padding = "10px";
-    timerDisplay.style.borderRadius = "8px";
-    timerDisplay.innerHTML = `Tiempo restante: ${timer}s`;
-    document.body.appendChild(timerDisplay);
-
-    const countdown = setInterval(() => {
-      timer--;
-      timerDisplay.innerHTML = `Tiempo restante: ${timer}s`;
-      if (timer <= 0) {
-        clearInterval(countdown);
-        alert("¡Se acabó el tiempo! Inténtalo de nuevo.");
-        window.location.reload();
-      }
-    }, 1000);
-  </script>
+    </script>
 </body>
 </html>

@@ -52,11 +52,10 @@
     <a-assets>
       <img id="returnImg" src="assets/Return.jpg">
     </a-assets>
-    <a-plane class="clickable" id="backToHome" position="0 3 -8" rotation="0 0 0" width="3" height="1.5"
+    <a-plane class="clickable" id="backToHome" position="0 3 5" rotation="0 160 0" width="3" height="1.5"
              src="#returnImg" material="transparent: true"></a-plane>
-
-    <!-- Extra cámara (innecesaria pero mantenida si hay lógica que la requiera) -->
-    <a-camera position="0 1.6 0"></a-camera>
+    <a-text value="Boton de retorno." color="red" position="0 4 5" rotation="0 160 0" align="center" width="6"></a-text>
+             
   </a-scene>
 
   <script>
@@ -70,9 +69,9 @@
       exitDoor.setAttribute("visible", "true");
     }
 
-    // Redirección al menú principal
+    // Redirección al nivel anterior
     function goToHome() {
-      window.location.href = "../RetroEscapeRoom.html";
+      window.location.href = "/mundo2/mon2.html";
     }
 
     // Evento del botón de retorno
