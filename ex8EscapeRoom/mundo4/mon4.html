@@ -89,14 +89,14 @@
 <a-plane position="9 0.01 14" width="3" height="3" rotation="-90 0 0" color="red" opacity="0.5" trigger-alarm></a-plane>
 
     <!-- Consola de salida oculta -->
-    <a-entity id="console" question="81" gltf-model="#consoleModel" position="14 0.01 -13" scale="0.5 0.5 0.5" visible="false" onclick="checkQuestion()"></a-entity>></a-entity>
+    <a-entity id="console" question="81" gltf-model="#consoleModel" position="14 0.01 -13" scale="0.5 0.5 0.5" visible="false" onclick="checkQuestion()"></a-entity>
     
 
     <!-- Cámara y controles -->
     <a-entity id="rig" movement-controls position="0 0 20">
       <a-entity camera look-controls wasd-controls position="0 1.6 0">
         <a-entity cursor="rayOrigin: mouse" 
-                  raycaster="objects: .clickable" 
+                  raycaster="objects: .clickable, [id='console']" 
                   position="0 0 -1" 
                   geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02" 
                   material="color: red; shader: flat">
