@@ -18,7 +18,9 @@
 <body>
     <a-scene cursor="rayOrigin: mouse">
       <a-entity camera look-controls wasd-controls position="0 1.6 0">
-        <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02" material="color: red; shader: flat"></a-entity>
+        <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable" position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                  material="color: red; shader: flat"></a-entity>
       </a-entity>
         <a-assets>
           <!-- Música de fondo -->
@@ -32,7 +34,6 @@
 
         <!-- Fondo del mundo -->
         <a-sky src="assets/Mario-world.jpeg"></a-sky>
-
 
         <!-- Modelo de bloques clon -->
         <a-asset-item id="blockModel" src="assets/block/scene.gltf"></a-asset-item>
@@ -55,11 +56,12 @@
         <!-- Porta de sortida invisible -->
         <a-box question="63" id="exitDoor" position="-2 0.5 -3" width="1" height="1" depth="1" material="opacity: 0; transparent: true"></a-box>
 
-        <!-- Salida hacia atrás con textura de entragroc.png -->
-        <a-plane id="backToHome" position="0 5 -30" rotation="0 180 0" width="5" height="5" src="assets/Return.jpg" 
-                 onclick="goToHome()" material="transparent: true">
+        <!-- Salida hacia atrás -->
+        <a-plane id="backToHome" class="clickable" position="2 -2 -5" rotation="0 -20 0" width="2" height="2"
+                 src="assets/Return.jpg" material="transparent: true" onclick="goToHome()">
         </a-plane>
-
+        <a-text value="Boton de Volver" color="red" position="2 -0.5 -5" align="center" width="6"></a-text>
+         
         <!-- Cámara al nivel del suelo -->
         <a-camera position="0 0.5 0"></a-camera>
     </a-scene>
@@ -91,13 +93,20 @@
       setInterval(() => {
         timerDisplay.innerHTML = `Tiempo restante: ${timer}s`;
       }, 1000);
-</script>
+    </script>
 
-<script>
-      function goToHome() {
-        // Redirige a la página de inicio usando una ruta relativa
-        window.location.href = "../RetroEscapeRoom.html";
+    <script>
+     function goToHome() {
+      window.location.href = "../RetroEscapeRoom.html";
+    }
+
+    // Añadir evento al botón de regreso
+    document.addEventListener("DOMContentLoaded", () => {
+      const returnButton = document.querySelector("#backToHome");
+      if (returnButton) {
+        returnButton.addEventListener("click", goToHome);
       }
+    });
     </script>
 </body>
 </html>

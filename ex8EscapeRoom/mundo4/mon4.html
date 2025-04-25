@@ -34,6 +34,7 @@
       <img id="floorTexture" src="assets/metal_floor.jpg">
       <img id="ceilingTexture" src="assets/metal_ceiling.jpg">
       <img id="cardTexture" src="assets/Card.jpeg">
+      
       <a-asset-item id="cameraModel" src="assets/camera/scene.gltf"></a-asset-item>
       <a-asset-item id="consoleModel" src="assets/console/scene.gltf"></a-asset-item>
     </a-assets>
@@ -103,8 +104,32 @@
         </a-entity>
       </a-entity>
     </a-entity>
+
+    <!-- 🔙 Botón de retorno -->
+    <a-assets>
+      <img id="returnImg" src="assets/Return.jpg">
+    </a-assets>
+    <a-plane class="clickable" id="backToHome" position="2 1 29" rotation="0 180 0" width="3" height="1.5"
+             src="#returnImg" material="transparent: true"></a-plane>
+    <a-text value="Boton de retorno." color="red" position="2 2 29" rotation="0 180 0" align="center" width="6"></a-text>
+             
+  </a-scene>
   </a-scene>
 
+  <script>
+    // Redirección al nivel anterior
+    function goToHome() {
+      window.location.href = "/mundo3/mon3.html";
+    }
+
+    // Evento del botón de retorno
+    document.addEventListener("DOMContentLoaded", () => {
+      const returnButton = document.querySelector("#backToHome");
+      if (returnButton) {
+        returnButton.addEventListener("click", goToHome);
+      }
+    });
+  </script>
 </body>
 
 </html>
